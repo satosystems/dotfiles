@@ -16,6 +16,7 @@ alias makepng='~/Dropbox/smc/bin/makepng.sh'
 # 一般的なエイリアス
 alias ls='ls -FG'
 alias tree='tree -N'
+alias vi='nvim'
 
 # さくらのレンタルサーバへのログイン
 alias sakura='ssh ogre@ogre.sakura.ne.jp'
