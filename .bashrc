@@ -55,7 +55,7 @@ export PS1='\[\e[0;35m\]\w\[\e[0m\033[1;34m\]$(__git_ps1)\[\e[1;32m\]\n\H\[\033[
 stty stop undef
 
 # nvm
-if [ "$(uname)" == "Darwin" ] && [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
+if [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
   . $(brew --prefix nvm)/nvm.sh
 fi
 

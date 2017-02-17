@@ -15,7 +15,7 @@ export HISTSIZE=10000
 [ "$(uname)" == "Darwin" ] && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # nvm
-if [ "$(uname)" == "Darwin" ] && [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
+if [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
 fi
 
