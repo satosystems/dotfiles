@@ -1,0 +1,46 @@
+[color]
+	diff = true
+	status = true
+	interactive = true
+	branch = true
+
+[receive]
+	denyCurrentBranch = refuse
+	denyNonFastForwards = true
+	denyDeletes = true
+
+[alias]
+	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	st = status
+	co = checkout
+	ci = commit
+	st-all = submodule foreach --recursive git st
+	push-all = submodule foreach git push
+	now = rev-parse --abbrev-ref HEAD
+	fetch-all = fetch --recurse-submodules
+	nm = branch --no-merged
+
+[push]
+	default = current
+
+[user]
+	name = Satoshi Ogata
+	email = satosystems@gmail.com
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[core]
+	editor = neovim
+	excludesfile = /Users/ogata/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
