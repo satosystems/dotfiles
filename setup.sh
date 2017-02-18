@@ -8,7 +8,7 @@ if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
 fi
 
 # create symblic files
-dotfiles=`ls -dFG .* | grep -v -e "./" -e ".*.swp"`
+dotfiles=`ls -dFG .* | grep -v -e "./" -e ".*.swp" -e ".gitignore"`
 
 for dotfile in $dotfiles; do
   echo "$dotfile => $HOME/$dotfile"
