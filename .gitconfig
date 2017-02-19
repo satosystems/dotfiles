@@ -1,4 +1,5 @@
 [color]
+	ui = true
 	diff = true
 	status = true
 	interactive = true
@@ -13,7 +14,7 @@
 	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 	st = status
 	co = checkout
-	ci = commit
+	cm = commit
 	st-all = submodule foreach --recursive git st
 	push-all = submodule foreach git push
 	now = rev-parse --abbrev-ref HEAD
@@ -37,7 +38,13 @@
 
 [core]
 	editor = neovim
-	excludesfile = /Users/ogata/.gitignore_global
+	excludesfile = ~/.gitignore_global
+	precomposeunicode = true
+	quotepath = false
+
+[merge]
+        ff = false
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
