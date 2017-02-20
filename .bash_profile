@@ -1,4 +1,5 @@
 export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
 
 # PATH 環境変数
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH

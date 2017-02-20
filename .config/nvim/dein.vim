@@ -1,39 +1,28 @@
-" initialize dein.vim
-call system("$XDG_CONFIG_HOME/nvim/dein/init.sh")
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
 
-if &compatible
-  set nocompatible               " Be iMproved
+" install dein if not exists
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
-" Required:
-set runtimepath+=$XDG_CONFIG_HOME/nvim/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state('$XDG_CONFIG_HOME/nvim/dein')
-  call dein#begin('$XDG_CONFIG_HOME/nvim/dein')
-
-  " Let dein manage dein
-  " Required:
-  call dein#add('$XDG_CONFIG_HOME/nvim/dein/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-  " Required:
+" load plugins and create cache
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file)
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
+" install plugins if not exists
+if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
