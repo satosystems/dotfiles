@@ -56,7 +56,7 @@ for i in `seq ${#urls[@]}`; do
   pair=(${pair[@]} ${urls[$i]})
   if [ $(($i % 2)) == 1 ]; then
     echo "${pair[1]} => ${pair[0]}"
-    curl ${urls[1]} > "$HOME/${pair[0]}"
+    curl ${pair[1]} > "$HOME/${pair[0]}"
     pair=()
   fi 	
 done
