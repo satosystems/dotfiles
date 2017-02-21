@@ -28,14 +28,14 @@ for dotfile in $dotfiles; do
 done
 
 # create symbolic directories
-dirs=(
+pairs=(
   ".config/nvim" "$HOME/.config/nvim"
 )
 
 pair=()
-for i in `seq ${#dirs[@]}`; do
+for i in `seq ${#pairs[@]}`; do
   let i--
-  pair=(${pair[@]} ${dirs[$i]})
+  pair=(${pair[@]} ${pairs[$i]})
   if [ $(($i % 2)) == 1 ]; then
     echo "${pair[0]} => ${pair[1]}"
     rm -rf "${pair[1]}"
@@ -45,18 +45,18 @@ for i in `seq ${#dirs[@]}`; do
 done
 
 # download git-completion.bash and git-prompt.sh from GitHub master branch
-urls=(
-  ".git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-  ".git-prompt.sh" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+pairs=(
+  "$HOME/.git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+  "$HOME/.git-prompt.sh" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
 )
 
 pair=()
-for i in `seq ${#urls[@]}`; do
+for i in `seq ${#pairs[@]}`; do
   let i--
-  pair=(${pair[@]} ${urls[$i]})
+  pair=(${pair[@]} ${pairs[$i]})
   if [ $(($i % 2)) == 1 ]; then
     echo "${pair[1]} => ${pair[0]}"
-    curl ${pair[1]} > "$HOME/${pair[0]}"
+    curl ${pair[1]} > "${pair[0]}"
     pair=()
   fi 	
 done
