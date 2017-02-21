@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   tput setaf 1 && echo "Usage:"
