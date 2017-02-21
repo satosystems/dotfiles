@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/sh
 
 if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   tput setaf 1 && echo "Usage:"
@@ -8,7 +8,7 @@ if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
 fi
 
 # create symblic files
-dotfiles=`ls -dFG .* | grep -v -e "./" -e ".*.swp" -e ".gitignore"`
+dotfiles=`ls -dFG .* | grep -v -e "/$" -e "\.*\.swp$" -e "^\.DS_Store$" -e "^\.gitignore$"`
 
 for dotfile in $dotfiles; do
   echo "$dotfile => $HOME/$dotfile"
@@ -20,24 +20,36 @@ done
 [ -d "$HOME/.config/nvim" ] || mkdir -p "$HOME/.config/nvim"
 
 # create symbolic directories
-declare -A dirs
+dirs=(
+  ".config/nvim" "$HOME/.config/nvim"
+)
 
-dirs[".config/nvim"]="$HOME/.config/nvim"
-
-for i in ${!dirs[@]}; do
-  echo "${i} => ${dirs[$i]}"
-  rm -rf "${dirs[$i]}"
-  ln -s "`pwd`/${i}" "${dirs[$i]}"
+pair=()
+for i in `seq ${#dirs[@]}`; do
+  let i--
+  pair=(${pair[@]} ${dirs[$i]})
+  if [ $(($i % 2)) == 1 ]; then
+    echo "${pair[0]} => ${pair[1]}"
+    rm -rf "${pair[1]}"
+    ln -s "`pwd`/${pair[0]}" "${pair[1]}"
+    pair=()
+  fi
 done
 
 # download git-completion.bash and git-prompt.sh from GitHub master branch
-declare -A urls
+urls=(
+  ".git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+  ".git-prompt.sh" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+)
 
-urls[".git-completion.bash"]="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-urls[".git-prompt.sh"]="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
-
-for i in ${!urls[@]}; do
-  echo "${urls[$i]} => ${i}"
-  curl ${urls[$i]} > "$HOME/${i}"
+pair=()
+for i in `seq ${#urls[@]}`; do
+  let i--
+  pair=(${pair[@]} ${urls[$i]})
+  if [ $(($i % 2)) == 1 ]; then
+    echo "${pair[1]} => ${pair[0]}"
+    curl ${urls[1]} > "$HOME/${pair[0]}"
+    pair=()
+  fi 	
 done
 
