@@ -7,6 +7,17 @@ if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   exit 1
 fi
 
+# create directories
+dirs=(
+  "$HOME/.cache"  # XDG_CACHE_HOME
+  "$HOME/.config/nvim"  # nvim in XDG_CONFIG_HOME
+)
+
+for dir in ${dirs[@]}; do
+  echo "mkdir $dir"
+  [ -d $dir ] || mkdir -p $dir
+done
+
 # create symblic files
 dotfiles=`ls -dFG .* | grep -v -e "/$" -e "\.*\.swp$" -e "^\.DS_Store$" -e "^\.gitignore$"`
 
@@ -15,9 +26,6 @@ for dotfile in $dotfiles; do
   rm -rf "$HOME/$dotfile"
   ln -s "`pwd`/$dotfile" "$HOME/$dotfile"
 done
-
-# create nvim of xdg-config-home
-[ -d "$HOME/.config/nvim" ] || mkdir -p "$HOME/.config/nvim"
 
 # create symbolic directories
 dirs=(
