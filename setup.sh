@@ -61,3 +61,6 @@ for i in `seq ${#pairs[@]}`; do
   fi 	
 done
 
+# refresh
+. ~/.bash_profile
+
