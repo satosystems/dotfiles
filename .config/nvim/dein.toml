@@ -28,12 +28,9 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]  # カラースキーマ
-repo = 'w0ng/vim-hybrid'
+repo = 'satosystems/newspaper.vim'
 hook_add = '''
-  set background=dark
-  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-  au MyAutoCmd VimEnter * nested colorscheme hybrid
+  au MyAutoCmd VimEnter * nested colorscheme newspaper
 '''
 
 [[plugins]]  # Haskell の補完
