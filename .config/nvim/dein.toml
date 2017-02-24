@@ -33,6 +33,9 @@ hook_add = '''
   au MyAutoCmd VimEnter * nested colorscheme newspaper
 '''
 
+[[plugins]]  # 日本語ヘルプ
+repo = 'vim-jp/vimdoc-ja'
+
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
