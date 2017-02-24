@@ -15,3 +15,6 @@ set softtabstop=0
 
 filetype plugin indent on
 
+" q で quickfix を閉じれるようにする
+au FileType qf nnoremap <silent><buffer>q :quit<CR>
+
