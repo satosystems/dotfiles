@@ -14,6 +14,16 @@ alias smcpng='dot -T png -o'
 alias makepng='~/Dropbox/smc/bin/makepng.sh'
 
 # 一般的なエイリアス
+custom_pushd() {
+  [ $# == 0 ] && DIR="$HOME" || DIR="$1"
+  pushd "$DIR" > /dev/null
+}
+custom_popd() {
+  popd > /dev/null
+}
+alias pushd='custom_pushd'
+alias popd='custom_popd'
+alias cd='custom_pushd'
 alias ls='ls -FG'
 alias tree='tree -N'
 alias vi='nvim'

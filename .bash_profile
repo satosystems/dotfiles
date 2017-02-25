@@ -9,7 +9,7 @@ export XDG_CACHE_HOME=~/.cache
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
-export HISTIGNORE="fg*:bg*:jobs*:history*:cd*"
+export HISTIGNORE="fg*:bg*:jobs*:dirs*:history*"
 export HISTSIZE=10000
 
 # macOS Java のバージョン切り替え
