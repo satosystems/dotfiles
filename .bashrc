@@ -26,7 +26,7 @@ alias popd='custom_popd'
 alias cd='custom_pushd'
 alias ls='ls -FG'
 alias tree='tree -N'
-alias vi='nvim'
+[ -s "`which nvim`" ] && alias vi='nvim' || alias vi='vim'
 
 # さくらのレンタルサーバへのログイン
 alias sakura='ssh ogre@ogre.sakura.ne.jp'

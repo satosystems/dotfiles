@@ -30,6 +30,8 @@ done
 # create symbolic directories
 pairs=(
   ".config/nvim" "$HOME/.config/nvim"
+  ".config/nvim" "$HOME/.vim"
+  ".config/nvim/init.vim" "$HOME/.vimrc"
 )
 
 pair=()
@@ -58,7 +60,7 @@ for i in `seq ${#pairs[@]}`; do
     echo "${pair[1]} => ${pair[0]}"
     curl ${pair[1]} > "${pair[0]}"
     pair=()
-  fi 	
+  fi
 done
 
 # refresh
