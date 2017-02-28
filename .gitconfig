@@ -37,7 +37,7 @@
 	trustExitCode = true
 
 [core]
-	editor = vi
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 	precomposeunicode = true
 	quotepath = false
