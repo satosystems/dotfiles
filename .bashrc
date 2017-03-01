@@ -62,7 +62,8 @@ fi
 export PS1='\[\e[0;35m\]\w\[\e[0m\033[1;34m\]$(__git_ps1)\[\e[1;32m\]\n\H\[\033[00m\] \$ '
 
 # 履歴のインクリメンタルサーチが使用できるように stty の方を無効にする（stty stop は C-s）
-stty stop undef
+# ただし scp コマンド等でエラーが出ないように条件を付ける
+[ "$SSH_TTY" != "" ] && stty stop undef
 
 # nvm
 if [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
