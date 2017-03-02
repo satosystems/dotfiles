@@ -76,3 +76,6 @@ fi
 # Google Cloud SDK
 [ -f $HOME/google-cloud-sdk/completion.bash.inc ] && . "$HOME/google-cloud-sdk/completion.bash.inc"
 
+# PATH
+[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
+
