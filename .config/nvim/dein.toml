@@ -30,7 +30,11 @@ on_ft = 'toml'
 [[plugins]]  # カラースキーマ
 repo = 'satosystems/newspaper.vim'
 hook_add = '''
-  au MyAutoCmd VimEnter * nested colorscheme newspaper
+  if has('nvim')
+    au MyAutoCmd VimEnter * nested colorscheme newspaper
+  else
+    colorscheme newspaper
+  endif
 '''
 
 [[plugins]]  # 日本語ヘルプ
