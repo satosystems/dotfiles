@@ -24,7 +24,11 @@ custom_popd() {
 alias pushd='custom_pushd'
 alias popd='custom_popd'
 alias cd='custom_pushd'
-alias ls='ls -FG'
+if [ "$(uname)" == "Darwin" ]; then
+  alias ls='ls -FG'
+else
+  alias ls='ls -F --color=auto'
+fi
 alias tree='tree -N'
 [ -s "`which nvim`" ] && alias vi='nvim' || alias vi='vim'
 
