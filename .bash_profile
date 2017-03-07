@@ -6,6 +6,7 @@ export XDG_CACHE_HOME=~/.cache
 [ -d $HOME/Library/Android/sdk/platform-tools ] && export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 [ -d $HOME/Library/Android/sdk/tools ] && export PATH=$PATH:$HOME/Library/Android/sdk/tools
 [ -d $HOME/Library/ndk ] && export PATH=$PATH:$HOME/Library/ndk
+[[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.stack/programs/arm-linux/ghc-8.0.2/bin ] && export PATH=$PATH:$HOME/.stack/programs/arm-linux/ghc-8.0.2/bin
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
