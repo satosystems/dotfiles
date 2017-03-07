@@ -2,6 +2,8 @@ if &compatible
   set nocompatible
 endif
 
+syntax on
+
 set list
 set listchars=tab:⠒\ ,trail:⣿,extends:»,precedes:«,nbsp:░
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
