@@ -82,7 +82,8 @@ repo = 'kana/vim-filetype-haskell'
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
-[[plugins]]  # My sample
-repo = 'satosystems/neovim-plugin-hello-haskell'
-build = 'stack build'
+# Raspberry Pi 環境で非常に時間がかかるためコメントアウト
+#[[plugins]]  # My sample
+#repo = 'satosystems/neovim-plugin-hello-haskell'
+#build = 'stack build'
 
