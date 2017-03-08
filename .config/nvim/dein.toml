@@ -77,9 +77,18 @@ repo = 'eagletmt/neco-ghc'
 repo = 'eagletmt/ghcmod-vim'
 
 [[plugins]]
-repo = 'kana/vim-filetype-haskell'
+repo = 'eagletmt/unite-haddock'
 
 [[plugins]]
+repo = 'dag/vim2hs'
+
+[[plugins]]
+repo = 'ujihisa/unite-haskellimport'
+
+[[plugins]]
+repo = 'kana/vim-filetype-haskell'
+
+[[plugins]]  # 汎用コメントアウト
 repo = 'tpope/vim-commentary'
 
 # Raspberry Pi 環境で非常に時間がかかるためコメントアウト
