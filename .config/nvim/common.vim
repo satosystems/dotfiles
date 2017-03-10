@@ -30,4 +30,6 @@ filetype indent on
 
 " q で quickfix を閉じれるようにする
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
+" QuickFix を自動で開く
+autocmd QuickfixCmdPost * copen
 
