@@ -32,9 +32,6 @@ fi
 alias tree='tree -N'
 [ -s "`which nvim`" ] && alias vi='nvim' || alias vi='vim'
 
-# さくらのレンタルサーバへのログイン
-alias sakura='ssh ogre@ogre.sakura.ne.jp'
-
 # ssh-agent 関連
 [ -f $HOME/.ssh/id_rsa_github ] && eval `ssh-agent`
 [ -f $HOME/.ssh/id_rsa_github ] && ssh-add $HOME/.ssh/id_rsa_github
