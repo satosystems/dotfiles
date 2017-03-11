@@ -91,6 +91,15 @@ repo = 'kana/vim-filetype-haskell'
 [[plugins]]  # 汎用コメントアウト
 repo = 'tpope/vim-commentary'
 
+[[plugins]]  # Markdown プラグイン
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]  # Markdown プレビュー
+repo = 'kannokanno/previm'
+
+[[plugins]]  # ブラウザ自動同期
+repo = 'tyru/open-browser.vim'
+
 # Raspberry Pi 環境で非常に時間がかかるためコメントアウト
 #[[plugins]]  # My sample
 #repo = 'satosystems/neovim-plugin-hello-haskell'

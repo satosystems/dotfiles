@@ -33,3 +33,11 @@ au FileType qf nnoremap <silent><buffer>q :quit<CR>
 " QuickFix を自動で開く
 autocmd QuickfixCmdPost * copen
 
+" Markdown のための拡張子設定
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+" プレビューを Firefox で開く
+let g:previm_open_cmd = 'open -a Firefox'
+
