@@ -5,7 +5,7 @@ endif
 syntax on  " シンタックスハイライト
 
 set list  " 空白の可視化
-set listchars=tab:⠒\ ,trail:⣿,extends:»,precedes:«,nbsp:░  " 空白の見え方
+set listchars=tab:￫\ ,trail:⣿,extends:»,precedes:«,nbsp:░  " 空白の見え方
 set laststatus=2  " ステータスラインを常に表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P  " ステータスライン設定
 
