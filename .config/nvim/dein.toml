@@ -28,12 +28,14 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]  # カラースキーマ
-repo = 'satosystems/newspaper.vim'
+repo = 'altercation/vim-colors-solarized'
 hook_add = '''
+  set background=light
+  let g:solarized_termcolors=256
   if has('nvim')
-    au MyAutoCmd VimEnter * nested colorscheme newspaper
+    au MyAutoCmd VimEnter * nested colorscheme solarized
   else
-    colorscheme newspaper
+    colorscheme solarized
   endif
 '''
 
