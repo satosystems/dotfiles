@@ -30,6 +30,7 @@ on_ft = 'toml'
 [[plugins]]  # カラースキーマ
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
+  syntax on
   set background=light
   let g:solarized_termcolors=256
   if has('nvim')

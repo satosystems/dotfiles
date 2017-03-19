@@ -2,8 +2,6 @@ if &compatible
   set nocompatible
 endif
 
-syntax on  " シンタックスハイライト
-
 set list  " 空白の可視化
 set listchars=tab:￫\ ,trail:⣿,extends:»,precedes:«,nbsp:░  " 空白の見え方
 set laststatus=2  " ステータスラインを常に表示
@@ -18,7 +16,6 @@ set autoindent  " 自動インデント
 set showcmd  " 入力中のコマンドをステータスに表示する
 set showmatch  " 対応する括弧を強調
 set hlsearch  " 検索結果を強調
-set paste  " 貼り付け時に自動インデントしない
 
 set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set smartcase  "検索文字列に大文字が含まれている場合は区別して検索する
