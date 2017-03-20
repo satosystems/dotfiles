@@ -26,6 +26,7 @@ alias popd='custom_popd'
 alias cd='custom_pushd'
 if [ "$(uname)" == "Darwin" ]; then
   alias ls='ls -FG'
+  alias rm='rmtrash'
 else
   alias ls='ls -F --color=auto'
 fi
