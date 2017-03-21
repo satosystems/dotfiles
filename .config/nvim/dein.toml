@@ -28,15 +28,15 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]  # カラースキーマ
-repo = 'altercation/vim-colors-solarized'
+repo = 'satosystems/desert.vim'
 hook_add = '''
   syntax on
   set background=light
   let g:solarized_termcolors=256
   if has('nvim')
-    au MyAutoCmd VimEnter * nested colorscheme solarized
+    au MyAutoCmd VimEnter * nested colorscheme desert
   else
-    colorscheme solarized
+    colorscheme desert
   endif
 '''
 
