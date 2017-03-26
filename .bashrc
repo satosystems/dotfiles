@@ -16,7 +16,15 @@ alias makepng='~/Dropbox/smc/bin/makepng.sh'
 # 一般的なエイリアス
 if [ "$(uname)" == "Darwin" ]; then
   alias ls='ls -FG'
-  alias rm='rmtrash'
+  custom_rm() {
+    array=()
+    for a in $@
+    do
+      [ "${a%-*}" == "" ] || array+=($a)  # オプションを無視する
+    done
+    rmtrash ${array[@]}
+  }
+  alias rm='custom_rm'
 else
   alias ls='ls -F --color=auto'
 fi
