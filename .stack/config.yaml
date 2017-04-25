@@ -9,7 +9,9 @@
 templates:
   scm-init: git
   params:
-#    author-name:
-#    author-email:
-#    copyright:
-#    github-username:
+    author-name: Satoshi Ogata
+    author-email: satosystems@gmail.com
+    copyright: 2017 Satoshi Ogata
+    github-username: satosystems
+    category: Development
+
