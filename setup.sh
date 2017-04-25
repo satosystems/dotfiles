@@ -32,6 +32,7 @@ pairs=(
   ".config/nvim" "$HOME/.config/nvim"
   ".config/nvim" "$HOME/.vim"
   ".config/nvim/init.vim" "$HOME/.vimrc"
+  ".stack/config.yaml" "$HOME/.stack/config.yaml"
 )
 
 pair=()
