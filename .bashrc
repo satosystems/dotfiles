@@ -81,3 +81,5 @@ fi
 # Google Cloud SDK
 [ -f $HOME/google-cloud-sdk/completion.bash.inc ] && . "$HOME/google-cloud-sdk/completion.bash.inc"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
