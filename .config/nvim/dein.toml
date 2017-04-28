@@ -92,7 +92,7 @@ repo = 'ujihisa/unite-haskellimport'
 repo = 'kana/vim-filetype-haskell'
 
 [[plugins]]  # 汎用コメントアウト
-repo = 'tpope/vim-commentary'
+repo = 'tomtom/tcomment_vim'
 
 [[plugins]]  # Markdown プラグイン
 repo = 'plasticboy/vim-markdown'
