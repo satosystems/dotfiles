@@ -32,7 +32,7 @@ alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 
 # ssh-agent 関連
-SSH_ENV=$HOME/.ssh/environment
+SSH_ENV=$HOME/.ssh-agent-environment
 start_agent() {
   ssh-agent > $SSH_ENV
   chmod 600 $SSH_ENV
