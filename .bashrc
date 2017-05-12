@@ -1,5 +1,5 @@
 # Haskell と Stack
-if [ -s "`which stack`" ]; then
+if [ -s "`which stack 2> /dev/null`" ]; then
   eval "$(stack --bash-completion-script stack)"
   alias ghc='stack exec ghc --'
   alias ghci='stack exec ghci --'
@@ -29,7 +29,7 @@ else
   alias ls='ls -F --color=auto'
 fi
 alias tree='tree -N'
-[ -s "`which nvim`" ] && alias vi='nvim' || alias vi='vim'
+[[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 
 # ssh-agent 関連
 [ -f $HOME/.ssh/id_rsa_github ] && eval `ssh-agent`
@@ -37,7 +37,7 @@ alias tree='tree -N'
 [ -f $HOME/.ssh/id_rsa_bitbucket ] && ssh-add $HOME/.ssh/id_rsa_bitbucket
 
 # Git 関連
-if [ -s "`which git`" ]; then
+if [[ `which git 2> /dev/null` = */git ]]; then
   . $HOME/.git-completion.bash
   . $HOME/.git-prompt.sh
   # 現在のブランチが upstream より進んでいるとき ">" を、
@@ -64,16 +64,13 @@ fi
 # \] 表示させない文字列の終了      #
 # \$ $                             #
 ####################################
-export PS1='\[\e[0;35m\]\w\[\e[0m\033[1;34m\]$(__git_ps1)\[\e[1;32m\]\n\H\[\033[00m\] \$ '
+if [ $(uname) != MINGW* ]; then
+  export PS1='\[\e[0;35m\]\w\[\e[0m\033[1;34m\]$(__git_ps1)\[\e[1;32m\]\n\H\[\033[00m\] \$ '
+fi
 
 # 履歴のインクリメンタルサーチが使用できるように stty の方を無効にする（stty stop は C-s）
 # ただし scp コマンド等でエラーが出ないように条件を付ける
 [ "$SSH_TTY" != "" ] && stty stop undef
-
-# nvm
-if [ -s "`which brew`" ] && [ "`brew list | grep -E '^nvm$'`" == "nvm" ]; then
-  . $(brew --prefix nvm)/nvm.sh
-fi
 
 # bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -83,3 +80,4 @@ fi
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
