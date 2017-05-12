@@ -27,3 +27,5 @@ fi
 
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
+if [[ $(uname) = MINGW* ]]; then cd; fi
+
