@@ -9,6 +9,8 @@ export XDG_CACHE_HOME=~/.cache
 [[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.stack/programs/arm-linux/ghc-8.0.2/bin ] && export PATH=$PATH:$HOME/.stack/programs/arm-linux/ghc-8.0.2/bin
 [[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.ghc-mod/.cabal-sandbox/bin ] && export PATH=$PATH:$HOME/.ghc-mod/.cabal-sandbox/bin
 [[ "$(uname)" == "Linux" ]] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
+# for ESP8266 closs compile
+[ -d /usr/local/opt/gnu-sed/bin ] && export PATH=/usr/local/opt/gnu-sed/bin:$PATH
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
