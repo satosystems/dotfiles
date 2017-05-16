@@ -35,5 +35,12 @@ fi
 
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
+# MINGW の場合、/ で開始してしまうため ~ に移動
 if [[ $(uname) = MINGW* ]]; then cd; fi
+
+# 便利関数
+## grep 置換
+greprep() {
+  grep -rl "$1" ./ | grep -v .git/ | xargs perl -i -pe "s/$1/$2/g"
+}
 
