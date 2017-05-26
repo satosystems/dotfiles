@@ -13,6 +13,9 @@ alias smcdot='smc -graph -glevel 1'
 alias smcpng='dot -T png -o'
 alias makepng='~/Dropbox/smc/bin/makepng.sh'
 
+# J-Link GDB Server
+alias jlink='/Applications/SEGGER/JLink/JLinkGDBServer -select USB -device Cortex-M3 -if JTAG -speed 1000'
+
 # 一般的なエイリアス
 if [ "$(uname)" == "Darwin" ]; then
   alias ls='ls -FG'
