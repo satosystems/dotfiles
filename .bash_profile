@@ -7,6 +7,7 @@ export XDG_CACHE_HOME=~/.cache
 [ -d $HOME/Library/Android/sdk/tools ] && export PATH=$PATH:$HOME/Library/Android/sdk/tools
 [ -d $HOME/Library/ndk ] && export PATH=$PATH:$HOME/Library/ndk
 [ -d $HOME/Library/Android/sdk/build-tools/26.0.0 ] && export PATH=$PATH:$HOME/Library/Android/sdk/build-tools/26.0.0
+[ -d $HOME/Library/Android/sdk/build-tools/25.0.3 ] && export PATH=$PATH:$HOME/Library/Android/sdk/build-tools/25.0.3
 [[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.stack/programs/arm-linux/ghc-8.0.2/bin ] && export PATH=$PATH:$HOME/.stack/programs/arm-linux/ghc-8.0.2/bin
 [[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.ghc-mod/.cabal-sandbox/bin ] && export PATH=$PATH:$HOME/.ghc-mod/.cabal-sandbox/bin
 [[ "$(uname)" == "Linux" ]] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
