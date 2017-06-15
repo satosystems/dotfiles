@@ -1,5 +1,7 @@
 #!/bin/bash
 
+UNAME=$(uname)
+
 if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   tput setaf 1 && echo "Usage:"
   tput setaf 4 && echo "  cd $(cd $(dirname $0) && pwd)"
@@ -24,7 +26,11 @@ dotfiles=`ls -dFG .* | grep -v -e "/$" -e "\.*\.swp$" -e "^\.DS_Store$" -e "^\.g
 for dotfile in $dotfiles; do
   echo "$dotfile => $HOME/$dotfile"
   rm -rf "$HOME/$dotfile"
-  ln -s "`pwd`/$dotfile" "$HOME/$dotfile"
+  if [ "${UNAME#CYGWIN}" == "$UNAME" ]; then
+    ln -s "`pwd`/$dotfile" "$HOME/$dotfile"
+  else
+    cp -f "`pwd`/$dotfile" "$HOME/$dotfile"
+  fi
 done
 
 # create symbolic directories
@@ -42,7 +48,11 @@ for i in `seq ${#pairs[@]}`; do
   if [ $(($i % 2)) == 1 ]; then
     echo "${pair[0]} => ${pair[1]}"
     rm -rf "${pair[1]}"
-    ln -s "`pwd`/${pair[0]}" "${pair[1]}"
+    if [ "${UNAME#CYGWIN}" == "$UNAME" ]; then
+      ln -s "`pwd`/${pair[0]}" "${pair[1]}"
+    else
+      cp -rf "`pwd`/${pair[0]}" "${pair[1]}"
+    fi
     pair=()
   fi
 done
