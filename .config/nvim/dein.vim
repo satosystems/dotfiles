@@ -21,11 +21,6 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" install vimproc first
-if dein#check_install(['vimproc'])
-  call dein#install(['vimproc'])
-endif
-
 " install plugins if not exists
 if has('vim_starting') && dein#check_install()
   call dein#install()
