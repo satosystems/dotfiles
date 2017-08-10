@@ -47,3 +47,5 @@ greprep() {
   grep -rl "$1" ./ | grep -v .git/ | xargs perl -i -pe "s/$1/$2/g"
 }
 
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
