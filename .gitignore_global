@@ -1,4 +1,11 @@
 *~
 .DS_Store
 .*.swp
+*.log
+.idea
+server/scripts/aiml/
+*.aiml
+flow_client
+flow_python
+flow_server
 

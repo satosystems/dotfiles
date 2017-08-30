@@ -7,6 +7,11 @@ if [ -s "`which stack 2> /dev/null`" ]; then
   alias runhaskell='stack exec runghc --'
 fi
 
+# flow 関連
+
+alias armhf='docker exec -it armhf sh'
+
+
 # SMC 関連のエイリアス
 alias smc='java -jar ~/Dropbox/smc/bin/Smc.jar'
 alias smcdot='smc -graph -glevel 1'
