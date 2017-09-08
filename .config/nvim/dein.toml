@@ -94,6 +94,9 @@ repo = 'ujihisa/unite-haskellimport'
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
 
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+
 [[plugins]]  # 汎用コメントアウト
 repo = 'tomtom/tcomment_vim'
 

@@ -8,9 +8,14 @@ set laststatus=2  " ステータスラインを常に表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P  " ステータスライン設定
 
 set number  " 行番号表示
-set tabstop=4  " タブ幅設定
-set shiftwidth=4  " タブ幅設定
-set softtabstop=0  " タブ幅設定
+set tabstop=4  " タブ文字幅設定
+set softtabstop=0  " タブ入力時変換幅設定
+set shiftwidth=4  " インデント時幅設定
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.hs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 set expandtab  " タブをスペースに展開
 set autoindent  " 自動インデント
 set showcmd  " 入力中のコマンドをステータスに表示する
