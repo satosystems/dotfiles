@@ -5,6 +5,8 @@ This repository controls version of dotfiles like `.bash_profile`.
 # How to install
 
 ```
-curl https://raw.githubusercontent.com/satosystems/dotfiles/master/install.sh | sh
+$ git clone git@github.com:satosystems/dotfiles.git
+$ cd dotfiles
+$ ./setup.sh
 ```
 
