@@ -16,6 +16,14 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+[[plugins]]  # ファイラー
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  map <C-n> :NERDTreeToggle<CR>
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  let g:NERDTreeShowHidden = 0
+'''
+
 [[plugins]]
 repo = 'toyamarinyon/vim-swift'
 
