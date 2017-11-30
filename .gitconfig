@@ -14,7 +14,6 @@
     graph = log --graph --date-order -C -M --pretty=format:\"%C(red)%h%Creset %C(cyan)%ad%Creset %C(yellow)%an%Creset %Cgreen%d%Creset %s\" --all --date=short
     st = status
     co = checkout
-    cm = commit
     br-all = submodule foreach --recursive git branch
     st-all = submodule foreach --recursive git st
     push-all = submodule foreach git push
@@ -30,12 +29,12 @@
     email = satosystems@gmail.com
 
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [core]
     editor = vim
