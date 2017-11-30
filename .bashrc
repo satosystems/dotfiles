@@ -9,7 +9,8 @@ fi
 
 # flow 関連
 
-alias armhf='docker exec -it armhf sh'
+alias armhf='docker exec -it armhf bash'
+alias x86_64='docker exec -it x86_64 bash'
 
 
 # SMC 関連のエイリアス
@@ -36,8 +37,12 @@ if [ "$(uname)" == "Darwin" ]; then
 else
   alias ls='ls -F --color=auto'
 fi
+alias ag='ag -u'
 alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff'
+fi
 
 # ssh-agent 関連
 SSH_ENV=$HOME/.ssh-agent-environment
