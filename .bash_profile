@@ -27,7 +27,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # macOS Java のバージョン切り替え
-[ "$(uname)" == "Darwin" ] && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+[ "$(uname)" == "Darwin" ] && export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
 # Python 関連
 if [ -s "`which pyenv 2> /dev/null`" ]; then
@@ -50,8 +50,9 @@ if [[ $(uname) = MINGW* ]]; then cd; fi
 
 # 便利関数
 ## grep 置換
+## greprep *.sh "\/bin\/sh" "\/bin\/bash"
 greprep() {
-  grep -rl "$1" ./ | grep -v .git/ | xargs perl -i -pe "s/$1/$2/g"
+  grep -rl "$2" $1 | grep -v .git/ | xargs perl -i -pe "s/$2/$3/g"
 }
 
 
