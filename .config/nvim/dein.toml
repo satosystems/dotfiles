@@ -117,6 +117,10 @@ repo = 'kannokanno/previm'
 [[plugins]]  # ブラウザ自動同期
 repo = 'tyru/open-browser.vim'
 
+[[plugins]]  # swig syntax
+repo = 'SpaceVim/vim-swig'
+on_ft = 'i'
+
 # Raspberry Pi 環境で非常に時間がかかるためコメントアウト
 #[[plugins]]  # My sample
 #repo = 'satosystems/neovim-plugin-hello-haskell'
