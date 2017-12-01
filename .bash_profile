@@ -25,14 +25,6 @@ export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで�
 export HISTIGNORE="fg*:bg*:jobs*:dirs*:history*"
 export HISTSIZE=10000
 
-# ESP8266 closs compile
-if [ "$(uname)" == "Darwin" ]; then
-  [ -d /usr/local/opt/gnu-sed/bin ] && export PATH=/usr/local/opt/gnu-sed/bin:$PATH
-  [ -d $HOME/xtensa-crosstools.sparsebundle ] || hdiutil create -type SPARSEBUNDLE -nospotlight -volname xtensa-crosstools -size 10g -fs "Case-sensitive HFS+" -verbose $HOME/xtensa-crosstools.sparsebundle
-  [ -d /Volumes/xtensa-crosstools ] || hdiutil mount $HOME/xtensa-crosstools.sparsebundle
-  export PATH=$PATH:/Volumes/xtensa-crosstools/esp-open-sdk/xtensa-lx106-elf/bin
-fi
-
 # macOS Java のバージョン切り替え
 [ "$(uname)" == "Darwin" ] && export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
