@@ -51,17 +51,18 @@ start_agent() {
   chmod 600 $SSH_ENV
   . $SSH_ENV > /dev/null
   # ssh-add
-  [ -f $HOME/.ssh/id_rsa_github ] && ssh-add $HOME/.ssh/id_rsa_github
-  [ -f $HOME/.ssh/id_rsa_bitbucket ] && ssh-add $HOME/.ssh/id_rsa_bitbucket
+  for i in `ls ~/.ssh/id_rsa* | grep -v ".pub"`;
+  do
+    ssh-add $i
+  done
 }
 
 if [ -f $SSH_ENV ]; then
   . $SSH_ENV > /dev/null
-  if ps ${SSH_AGENT_PID:-999999} | grep ssh-agent$ > /dev/null &&
-     test -S $SSH_AUTH_SOCK; then
+  if ps ${SSH_AGENT_PID:-999999} | grep ssh-agent$ > /dev/null && test -S $SSH_AUTH_SOCK; then
     echo agent already running > /dev/null
   else
-    start_agent;
+    start_agent
   fi
 else
   start_agent
