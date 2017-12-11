@@ -11,8 +11,9 @@ fi
 
 # create directories
 dirs=(
-  "$HOME/.cache"  # XDG_CACHE_HOME
-  "$HOME/.config/nvim"  # nvim in XDG_CONFIG_HOME
+  "$XDG_CACHE_HOME"  # XDG_CACHE_HOME
+  "$XDG_CONFIG_HOME/nvim"  # nvim on XDG_CONFIG_HOME
+  "$XDG_CONFIG_HOME/peco"  # peco on XDG_CONFIG_HOME
 )
 
 for dir in ${dirs[@]}; do
@@ -35,9 +36,10 @@ done
 
 # create symbolic directories
 pairs=(
-  ".config/nvim" "$HOME/.config/nvim"
+  ".config/nvim" "$XDG_CONFIG_HOME/nvim"
   ".config/nvim" "$HOME/.vim"
   ".config/nvim/init.vim" "$HOME/.vimrc"
+  ".config/peco/config.json" "$XDG_CONFIG_HOME/peco/config.json"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
 )
 
