@@ -33,6 +33,14 @@ set smartcase  "検索文字列に大文字が含まれている場合は区別�
 set wrapscan  "検索時に最後まで行ったら最初に戻る
 set noincsearch  "検索文字列入力時に順次対象文字列にヒットさせない
 
+"if has('mac')
+"  let g:vimproc_dll_path = $XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_mac.so'
+"elseif has('win32')
+"  let g:vimproc_dll_path = $XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_win32.dll'
+"elseif has('win64')
+"  let g:vimproc_dll_path = $XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_win64.dll'
+"endif
+
 " q で quickfix を閉じれるようにする
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
 " QuickFix を自動で開く
