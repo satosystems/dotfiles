@@ -33,6 +33,11 @@ autocmd FileType vim         setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType yaml        setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType sh          setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
 " q で quickfix を閉じれるようにする
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
 " QuickFix を自動で開く
