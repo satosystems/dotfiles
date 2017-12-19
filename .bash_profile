@@ -19,6 +19,7 @@ fi
 [[ "`arch`" =~ armv[0-9]+ ]] && [ -d $HOME/.ghc-mod/.cabal-sandbox/bin ] && export PATH=$PATH:$HOME/.ghc-mod/.cabal-sandbox/bin
 [[ "$(uname)" == "Linux" ]] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
 [ -d $HOME/.stack/programs/x86_64-osx/ghc-8.0.2/bin ] && export PATH=$PATH:$HOME/.stack/programs/x86_64-osx/ghc-8.0.2/bin
+[ -d /Library/TeX/texbin ] && export PATH=/Library/TeX/texbin:$PATH
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
