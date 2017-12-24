@@ -5,6 +5,9 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+[[plugins]]  # unite.vim
+repo = 'Shougo/unite.vim'
+
 [[plugins]]  # ファイラー
 repo = 'scrooloose/nerdtree'
 hook_add = '''
@@ -83,16 +86,7 @@ repo = 'eagletmt/ghcmod-vim'
 repo = 'eagletmt/unite-haddock'
 
 [[plugins]]
-repo = 'dag/vim2hs'
-
-[[plugins]]
-repo = 'ujihisa/unite-haskellimport'
-
-[[plugins]]
-repo = 'kana/vim-filetype-haskell'
-
-[[plugins]]
-repo = 'itchyny/vim-haskell-indent'
+repo = 'travitch/hasksyn'
 
 [[plugins]]  # 汎用コメントアウト
 repo = 'tomtom/tcomment_vim'
