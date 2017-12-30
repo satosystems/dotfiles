@@ -4,8 +4,11 @@
         "C-f": "peco.SelectDown"
     },
     "Style": {
-        "Selected": ["underline", "on_white", "black"],
-        "Matched": ["blue", "on_black"]
+        "Basic": ["on_default", "default"],
+        "SavedSelection": ["bold", "on_yellow", "white"],
+        "Selected": ["underline", "on_cyan", "black"],
+        "Query": ["yellow", "bold"],
+        "Matched": ["red", "on_blue"]
     }
 }
 
