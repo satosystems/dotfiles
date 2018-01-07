@@ -30,6 +30,8 @@ filetype plugin on
 filetype indent on
 autocmd FileType haskell     setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType vim         setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType yaml        setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType sh          setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " q で quickfix を閉じれるようにする
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
