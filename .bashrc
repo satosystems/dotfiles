@@ -25,17 +25,11 @@ alias jlink='/Applications/SEGGER/JLink/JLinkGDBServer -select USB -device Corte
 # 一般的なエイリアス
 if [ "$(uname)" == "Darwin" ]; then
   alias ls='ls -FG'
-  custom_rm() {
-    array=()
-    for a in $@
-    do
-      [ "${a%-*}" == "" ] || array+=($a)  # オプションを無視する
-    done
-    rmtrash ${array[@]}
-  }
-  alias rm='custom_rm'
 else
   alias ls='ls -F --color=auto'
+fi
+if [[ -x `which rmtrash` ]]; then
+  alias rm='rmtrash'
 fi
 alias ag='ag -u'
 alias tree='tree -N'
