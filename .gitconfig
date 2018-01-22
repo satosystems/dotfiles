@@ -18,6 +18,7 @@
     st-all = submodule foreach --recursive git st
     push-all = submodule foreach git push
     now = rev-parse --abbrev-ref HEAD
+    ch = rev-parse HEAD
     fetch-all = fetch --recurse-submodules
     nm = branch --no-merged
 
