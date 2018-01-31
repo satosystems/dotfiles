@@ -4,8 +4,8 @@ UNAME=$(uname)
 
 if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   tput setaf 1 && echo "Usage:"
-  tput setaf 4 && echo "  cd $(cd $(dirname $0) && pwd)"
-  tput setaf 4 && echo "  ./setup.sh"
+  tput setaf 4 && echo "cd $(cd $(dirname $0) && pwd)"
+  tput setaf 4 && echo "./setup.sh"
   exit 1
 fi
 
