@@ -11,10 +11,8 @@ fi
 
 # create directories
 dirs=(
-  "$XDG_CACHE_HOME"  # XDG_CACHE_HOME
-  "$XDG_CONFIG_HOME/nvim"  # nvim on XDG_CONFIG_HOME
-  "$XDG_CONFIG_HOME/peco"  # peco on XDG_CONFIG_HOME
-  "$HOME/Library/KeyBindings"  # keyboard bindings
+  "$XDG_CONFIG_HOME"
+  "$XDG_CACHE_HOME"
 )
 
 for dir in ${dirs[@]}; do
@@ -38,11 +36,11 @@ done
 # create symbolic directories
 pairs=(
   ".config/nvim" "$XDG_CONFIG_HOME/nvim"
+  ".config/peco" "$XDG_CONFIG_HOME/peco"
+  "Library/KeyBindings" "$HOME/Library/KeyBindings"
   ".config/nvim" "$HOME/.vim"
   ".config/nvim/init.vim" "$HOME/.vimrc"
-  ".config/peco/config.json" "$XDG_CONFIG_HOME/peco/config.json"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
-  "Library/KeyBindings/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
 )
 
 pair=()
