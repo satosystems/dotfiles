@@ -35,7 +35,9 @@ alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
-  alias diff='colordiff'
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
 fi
 
 [[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
