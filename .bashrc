@@ -9,8 +9,9 @@ fi
 
 # flow 関連
 
-alias armhf='docker exec -it armhf bash'
-alias x86_64='docker exec -it x86_64 bash'
+alias armhf='docker exec -it flow-ubuntu-armhf bash'
+alias ubuntu='docker exec -it flow-ubuntu-x86_64 bash'
+alias centos='docker exec -it flow-centos-x86_64 bash'
 
 
 # SMC 関連のエイリアス
@@ -28,15 +29,16 @@ if [ "$(uname)" == "Darwin" ]; then
 else
   alias ls='ls -F --color=auto'
 fi
-if [[ -x `which rmtrash` ]]; then
-  alias rm='rmtrash'
-fi
+alias rm='macrm'
 alias ag='ag -u'
 alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
+alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff'
 fi
+
+[[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
 
 # ssh-agent 関連
 SSH_ENV=$HOME/.ssh-agent-environment
