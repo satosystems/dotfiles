@@ -39,7 +39,6 @@ if [[ -x `which colordiff` ]]; then
 else
   alias diff='diff -u'
 fi
-
 [[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
 
 # ssh-agent 関連
