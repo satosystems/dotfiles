@@ -40,6 +40,7 @@ else
   alias diff='diff -u'
 fi
 [[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
+alias ag='ag -S'
 
 # ssh-agent 関連
 SSH_ENV=$HOME/.ssh-agent-environment
