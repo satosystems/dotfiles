@@ -30,7 +30,7 @@ else
   alias ls='ls -F --color=auto'
 fi
 alias rm='macrm'
-alias ag='ag -u'
+alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 alias vi-noplugin='vi -u NONE --noplugin'
@@ -40,7 +40,6 @@ else
   alias diff='diff -u'
 fi
 [[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
-alias ag='ag -S'
 
 # ssh-agent 関連
 SSH_ENV=$HOME/.ssh-agent-environment
