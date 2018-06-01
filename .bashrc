@@ -29,7 +29,9 @@ if [ "$(uname)" == "Darwin" ]; then
 else
   alias ls='ls -F --color=auto'
 fi
-alias rm='macrm'
+if [ -s "`which macrm 2> /dev/null`" ]; then
+  alias rm='macrm'
+fi
 alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
