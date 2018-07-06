@@ -34,7 +34,11 @@ if [ -s "`which macrm 2> /dev/null`" ]; then
 fi
 alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
+if false; then
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
+else
+alias vi='vim'
+fi
 alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
