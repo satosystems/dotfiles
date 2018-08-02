@@ -1,10 +1,7 @@
 # Haskell と Stack
 if [ -s "`which stack 2> /dev/null`" ]; then
   eval "$(stack --bash-completion-script stack)"
-  alias ghc='stack exec ghc --'
-  alias ghci='stack exec ghci --'
-  alias runghc='stack exec runghc --'
-  alias runhaskell='stack exec runghc --'
+  eval "$(stack exec env | grep ^PATH=)"
 fi
 
 # flow 関連
