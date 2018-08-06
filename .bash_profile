@@ -19,6 +19,11 @@ fi
 [ "$(uname)" == "Linux" ] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
 [ -d /Library/TeX/texbin ] && export PATH=/Library/TeX/texbin:$PATH
 [ -d /usr/local/opt/curl/bin ] && export PATH=/usr/local/opt/curl/bin:$PATH  # macOS 上で brew で OpenSSL を有効化した curl がある場合はそちらを使用する
+if [ -d /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin ]; then
+  pushd /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin > /dev/null
+  export PATH=`pwd`:$PATH
+  popd > /dev/null
+fi
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない

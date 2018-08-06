@@ -11,7 +11,8 @@ set number  " 行番号表示
 set showcmd  " 入力中のコマンドをステータスに表示する
 set showmatch  " 対応する括弧を強調
 set hlsearch  " 検索結果を強調
-set mouse=v  " ヴィジュアルモードのみマウスを有効
+set mouse=a  " ヴィジュアルモードのみマウスを有効
+set clipboard=unnamed,autoselect  " 選択でヤンクして visual モード移行、クリップボードににコピー
 set hidden  " 保存せずにバッファ切替可能にする
 set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set smartcase  "検索文字列に大文字が含まれている場合は区別して検索する
