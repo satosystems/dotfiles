@@ -34,6 +34,7 @@ if [ -s "`which pyenv 2> /dev/null`" ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
+[ -d $HOME/Library/Python/2.7/bin ] && export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
 # nvm
 res=which brew 2> /dev/null && brew list | grep -E '^nvm$'
@@ -53,6 +54,9 @@ if [[ $(uname) = MINGW* ]]; then cd; fi
 greprep() {
   grep -rl "$2" $1 | grep -v .git/ | xargs perl -i -pe "s/$2/$3/g"
 }
+
+# 複数ターミナルのコマンド履歴をすべて保存
+shopt -s histappend
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

@@ -7,8 +7,10 @@ fi
 # flow 関連
 
 alias armhf='docker exec -it flow-ubuntu-armhf bash'
-alias ubuntu='docker exec -it flow-ubuntu-x86_64 bash'
-alias centos='docker exec -it flow-centos-x86_64 bash'
+alias ubuntu18='docker exec -it flow-ubuntu-x86_64-18.04 bash'
+alias ubuntu14='docker exec -it flow-ubuntu-x86_64-14.04 bash'
+alias centos6='docker exec -it flow-centos-x86_64-6.8 bash'
+alias centos7='docker exec -it flow-centos-x86_64-7.3 bash'
 
 
 # SMC 関連のエイリアス
@@ -31,11 +33,7 @@ if [ -s "`which macrm 2> /dev/null`" ]; then
 fi
 alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
-if false; then
 [[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
-else
-alias vi='vim'
-fi
 alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
