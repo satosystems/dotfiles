@@ -21,6 +21,7 @@
     ch = rev-parse HEAD
     fetch-all = fetch --recurse-submodules
     nm = branch --no-merged
+    renew = !export __b=`git now` && git branch -m ___ && git co $__b && git branch -D ___ && unset __b
 
 [push]
     default = current
