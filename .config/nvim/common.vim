@@ -3,9 +3,11 @@ if &compatible
 endif
 
 set list  " 空白の可視化
-set listchars=tab:￫\ ,trail:⣿,extends:»,precedes:«,nbsp:░  " 空白の見え方
+set listchars=tab:￫\ ,extends:»,precedes:«,nbsp:░  " 空白の見え方
 set laststatus=2  " ステータスラインを常に表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P  " ステータスライン設定
+highlight WhiteSpace ctermbg=234  " 末尾スペースに色を付ける
+match WhiteSpace / \+$/  " 末尾スペースに色を付ける
 
 set number  " 行番号表示
 set showcmd  " 入力中のコマンドをステータスに表示する
@@ -53,4 +55,6 @@ augroup PrevimSettings
 augroup END
 " プレビューを Firefox で開く
 let g:previm_open_cmd = 'open -a Firefox'
+
+set t_ke=""  " コンソールの状態を復元
 
