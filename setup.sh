@@ -41,6 +41,7 @@ pairs=(
   ".config/nvim" "$HOME/.vim"
   ".config/nvim/init.vim" "$HOME/.vimrc"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
+  ".clang-format" "$HOME/.clang-format"
 )
 
 pair=()
