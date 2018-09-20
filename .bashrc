@@ -67,19 +67,11 @@ else
   start_agent
 fi
 
-# ESP8266 関連
-if [ "$(uname)" == "Darwin" ]; then
-  start_esp8266() {
-    [ -d /usr/local/opt/gnu-sed/bin ] && export PATH=/usr/local/opt/gnu-sed/bin:$PATH
-    [ -d $HOME/xtensa-crosstools.sparsebundle ] || hdiutil create -type SPARSEBUNDLE -nospotlight -volname xtensa-crosstools -size 10g -fs "Case-sensitive HFS+" -verbose $HOME/xtensa-crosstools.sparsebundle
-    [ -d /Volumes/xtensa-crosstools ] || hdiutil mount $HOME/xtensa-crosstools.sparsebundle
-    case $PATH in
-      */Volumes/xtensa-crosstools/esp-open-sdk/xtensa-lx106-elf/bin*)
-        export PATH=$PATH:/Volumes/xtensa-crosstools/esp-open-sdk/xtensa-lx106-elf/bin
-    esac
-  }
+# PlatformIO 関連
+if [ -s "`which platformio 2> /dev/null`" ]; then
+  eval "$(_PLATFORMIO_COMPLETE=source platformio)"
+  eval "$(_PIO_COMPLETE=source pio)"
 fi
-
 
 # Git 関連
 if [[ `which git 2> /dev/null` = */git ]]; then
