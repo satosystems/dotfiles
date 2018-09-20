@@ -56,18 +56,4 @@ FixNamespaceComments: false
 ForEachMacros: for_each
 KeepEmptyLinesAtTheStartOfBlocks: false
 #MaxEmptyLinesToKeep: 1000
-Language: Cpp
-
-
-
-
-
-
-
-
-AllowShortFunctionsOnASingleLine: None
-BreakConstructorInitializersBeforeComma: true
-SpaceAfterCStyleCast: true
-BreakBeforeBraces: Attach
-ColumnLimit: 0
-
+#Language: Cpp
