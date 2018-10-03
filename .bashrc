@@ -74,9 +74,9 @@ if [ -s "`which platformio 2> /dev/null`" ]; then
 fi
 
 # Git 関連
-if [[ `which git 2> /dev/null` = */git ]]; then
-  . $HOME/.git-completion.bash
-  . $HOME/.git-prompt.sh
+if [ -d /usr/local/etc/bash_completion.d ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
+  . /usr/local/etc/bash_completion.d/git-prompt.sh
   # 現在のブランチが upstream より進んでいるとき ">" を、
   # 遅れているとき "<" を、
   # 遅れてるけど独自の変更もあるとき "<>" を表示する

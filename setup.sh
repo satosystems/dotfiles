@@ -61,21 +61,24 @@ for i in `seq ${#pairs[@]}`; do
 done
 
 # download git-completion.bash and git-prompt.sh from GitHub master branch
-pairs=(
-  "$HOME/.git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-  "$HOME/.git-prompt.sh" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
-)
-
-pair=()
-for i in `seq ${#pairs[@]}`; do
-  let i--
-  pair=(${pair[@]} ${pairs[$i]})
-  if [ $(($i % 2)) == 1 ]; then
-    echo "${pair[1]} => ${pair[0]}"
-    curl ${pair[1]} > "${pair[0]}"
-    pair=()
-  fi
-done
+# Homebrew で導入する git に付属するのでダウンロードしない
+# スクリプトと git のバージョンの整合が崩れると補完時にエラーが出る
+# 上記理由でコメントアウト
+#pairs=(
+#  "$HOME/.git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+#  "$HOME/.git-prompt.sh" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+#)
+#
+#pair=()
+#for i in `seq ${#pairs[@]}`; do
+#  let i--
+#  pair=(${pair[@]} ${pairs[$i]})
+#  if [ $(($i % 2)) == 1 ]; then
+#    echo "${pair[1]} => ${pair[0]}"
+#    curl ${pair[1]} > "${pair[0]}"
+#    pair=()
+#  fi
+#done
 
 # refresh
 . ~/.bash_profile
