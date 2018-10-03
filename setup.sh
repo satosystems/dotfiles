@@ -42,21 +42,20 @@ pairs=(
   ".config/nvim/init.vim" "$HOME/.vimrc"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
   ".clang-format" "$HOME/.clang-format"
+  "Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 )
 
-pair=()
 for i in `seq ${#pairs[@]}`; do
-  let i--
-  pair=(${pair[@]} ${pairs[$i]})
   if [ $(($i % 2)) == 1 ]; then
-    echo "${pair[0]} => ${pair[1]}"
-    rm -rf "${pair[1]}"
+    fst=${pairs[$i-1]}
+    snd=${pairs[$i]}
+    echo "${fst} => ${snd}"
+    rm -rf "${snd}"
     if [ "${UNAME#CYGWIN}" == "$UNAME" ]; then
-      ln -s "`pwd`/${pair[0]}" "${pair[1]}"
+      ln -s "`pwd`/${fst}" "${snd}"
     else
-      cp -rf "`pwd`/${pair[0]}" "${pair[1]}"
+      cp -rf "`pwd`/${fst}" "${snd}"
     fi
-    pair=()
   fi
 done
 
