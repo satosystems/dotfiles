@@ -42,6 +42,11 @@ if [ -s "`which pyenv 2> /dev/null`" ]; then
 fi
 [ -d $HOME/Library/Python/2.7/bin ] && export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
+# PlatformIO 関連
+if [ -d $HOME/.platformio/penv/bin ]; then
+  export PATH=$PATH:$HOME/.platformio/penv/bin
+fi
+
 # nvm
 res=which brew 2> /dev/null && brew list | grep -E '^nvm$'
 if [ "$res" == "nvm" ]; then
