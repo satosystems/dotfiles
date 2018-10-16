@@ -15,3 +15,9 @@ templates:
     github-username: satosystems
     category: Development
 
+extra-lib-dirs:
+- /usr/local/opt/mysql@5.7/lib
+
+extra-include-dirs:
+- /usr/local/opt/mysql@5.7/include
+
