@@ -43,22 +43,18 @@ fi
 [ -d $HOME/Library/Python/2.7/bin ] && export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
 # PlatformIO 関連
-if [ -d $HOME/.platformio/penv/bin ]; then
-  export PATH=$PATH:$HOME/.platformio/penv/bin
-fi
+[ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
 
 # mysql 関連
-if [ -d /usr/local/opt/mysql@5.7/bin ]; then
-  export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-  export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
-  export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
-  export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+if [ -d /usr/local/opt/mysql-client/bin ]; then
+  export PATH=/usr/local/opt/mysql-client/bin:$PATH
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/mysql-client/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/mysql-client/include"
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/mysql-client/lib/pkgconfig
 fi
 
 # Sebastien AIML 関連
-if [ -d $HOME/Documents/xls2aiml/bin ]; then
-  export PATH=$PATH:$HOME/Documents/xls2aiml/bin
-fi
+[ -d $HOME/Documents/xls2aiml/bin ] && export PATH=$PATH:$HOME/Documents/xls2aiml/bin
 
 # nvm
 res=which brew 2> /dev/null && brew list | grep -E '^nvm$'
