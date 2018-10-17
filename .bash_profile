@@ -47,13 +47,17 @@ if [ -d $HOME/.platformio/penv/bin ]; then
   export PATH=$PATH:$HOME/.platformio/penv/bin
 fi
 
-
 # mysql 関連
 if [ -d /usr/local/opt/mysql@5.7/bin ]; then
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
   export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
   export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+fi
+
+# Sebastien AIML 関連
+if [ -d $HOME/Documents/xls2aiml/bin ]; then
+  export PATH=$PATH:$HOME/Documents/xls2aiml/bin
 fi
 
 # nvm
