@@ -73,6 +73,9 @@ if [ -s "`which platformio 2> /dev/null`" ]; then
   eval "$(_PIO_COMPLETE=source pio)"
 fi
 
+[ -f /usr/local/etc/bash_completion.d/cabal ] && source /usr/local/etc/bash_completion.d/cabal
+[ -f /usr/local/etc/bash_completion.d/docker ] && source /usr/local/etc/bash_completion.d/docker
+
 # Git 関連
 if [ -d /usr/local/etc/bash_completion.d ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
