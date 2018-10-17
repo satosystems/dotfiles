@@ -2,5 +2,7 @@
     "files.insertFinalNewline": true,
     "arduino.additionalUrls": [
         "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
-    ]
+    ],
+    "diffEditor.ignoreTrimWhitespace": true,
+    "window.zoomLevel": 0
 }
