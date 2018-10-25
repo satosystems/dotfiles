@@ -1,11 +1,14 @@
+# vi および Emacs の一時ファイル
 *~
-.DS_Store
-.*.sw*
-*.log
-.idea
-server/scripts/aiml/
-*.aiml
-flow_client
-flow_python
-flow_server
 
+# Vim の一時ファイル
+.*.sw*
+
+# Mac のメタデータ
+.DS_Store
+
+# Office の一時ファイル
+~$*.*
+
+# JetBrains の IDE の設定用フォルダ
+.idea/
