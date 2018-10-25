@@ -46,11 +46,23 @@ fi
 [ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
 
 # mysql 関連
-if [ -d /usr/local/opt/mysql-client/bin ]; then
-  export PATH=/usr/local/opt/mysql-client/bin:$PATH
-  export LDFLAGS="$LDFLAGS -L/usr/local/opt/mysql-client/lib"
-  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/mysql-client/include"
-  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/mysql-client/lib/pkgconfig
+if [ -d /usr/local/opt/mysql@5.7/bin ]; then
+  export PATH=/usr/local/opt/mysql@5.7/bin:$PATH
+  if [ "$LDFLAGS" == "" ]; then
+    export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+  else
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/mysql@5.7/lib"
+  fi
+  if [ "$CPPFLAGS" == "" ]; then
+    export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+  else
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/mysql@5.7/include"
+  fi
+  if [ "$PKG_CONFIG_PATH" == "" ]; then
+    export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+  else
+    export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/mysql@5.7/lib/pkgconfig"
+  fi
 fi
 
 # Sebastien AIML 関連
