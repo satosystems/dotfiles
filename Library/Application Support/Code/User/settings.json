@@ -4,5 +4,9 @@
         "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
     ],
     "diffEditor.ignoreTrimWhitespace": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "html.format.endWithNewline": true,
+    "editor.renderControlCharacters": true,
+    "languageServerHaskell.liquidOn": true,
+    "extensions.ignoreRecommendations": false
 }
