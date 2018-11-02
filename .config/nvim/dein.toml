@@ -108,4 +108,3 @@ on_ft = 'i'
 #[[plugins]]  # My sample
 #repo = 'satosystems/neovim-plugin-hello-haskell'
 #build = 'stack build'
-

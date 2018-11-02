@@ -7,4 +7,3 @@ else
   runtime common.vim
   runtime color.vim
 endif
-

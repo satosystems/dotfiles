@@ -25,4 +25,3 @@ endif
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
-

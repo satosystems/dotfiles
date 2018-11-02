@@ -57,4 +57,3 @@ augroup END
 let g:previm_open_cmd = 'open -a Firefox'
 
 set t_ke=""  " コンソールの状態を復元
-
