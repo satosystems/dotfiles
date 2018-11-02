@@ -8,5 +8,7 @@
     "html.format.endWithNewline": true,
     "editor.renderControlCharacters": true,
     "languageServerHaskell.liquidOn": true,
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "editor.fontFamily": "Ricty Discord",
+    "editor.fontSize": 14
 }
