@@ -32,7 +32,7 @@ export HISTIGNORE="fg*:bg*:jobs*:dirs*:history*"
 export HISTSIZE=10000
 
 # macOS Java のバージョン切り替え
-[ "$(uname)" == "Darwin" ] && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+[ "$(uname)" == "Darwin" ] && /usr/libexec/java_home > /dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # Python 関連
 if [ -s "`which pyenv 2> /dev/null`" ]; then
