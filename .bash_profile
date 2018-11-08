@@ -91,3 +91,16 @@ greprep() {
 shopt -s histappend
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+if [ -d /Users/ogata/Library/cocos2d-x ]; then
+  # Add environment variable COCOS_X_ROOT for cocos2d-x
+  export COCOS_X_ROOT="$HOME/Library/cocos2d-x"
+  export PATH=$COCOS_X_ROOT:$PATH
+
+  # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+  export COCOS_CONSOLE_ROOT="$COCOS_X_ROOT/tools/cocos2d-console/bin"
+  export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
+  # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
+  export COCOS_TEMPLATES_ROOT="$COCOS_X_ROOT/templates"
+fi
