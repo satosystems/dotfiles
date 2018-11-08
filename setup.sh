@@ -52,6 +52,9 @@ for i in `seq ${#pairs[@]}`; do
     echo "${fst} => ${snd}"
     rm -rf "${snd}"
     if [ "${UNAME#CYGWIN}" == "$UNAME" ]; then
+      if [  -f "${snd}" ]; then
+        rm "${snd}"
+      fi
       ln -s "`pwd`/${fst}" "${snd}"
     else
       cp -rf "`pwd`/${fst}" "${snd}"
