@@ -6,12 +6,12 @@ if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/platform-tools
   export PATH=$PATH:$ANDROID_HOME/tools
-  [ -d $ANDROID_HOME/build-tools/26.0.2 ] && export PATH=$PATH:$ANDROID_HOME/build-tools/26.0.2
-  [ -d $ANDROID_HOME/build-tools/26.0.0 ] && export PATH=$PATH:$ANDROID_HOME/build-tools/26.0.0
-  [ -d $ANDROID_HOME/build-tools/25.0.3 ] && export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.3
-  [ -d $ANDROID_HOME/build-tools/25.0.2 ] && export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2
+  for v in 25.0.3 27.0.3 28.0.3
+  do
+    [ -d $ANDROID_HOME/build-tools/$v ] && export PATH=$PATH:$ANDROID_HOME/build-tools/$v
+  done
+  [ -d $ANDROID_HOME/ndk-bundle ] && export NDK_ROOT=$ANDROID_HOME/ndk-bundle && export PATH=$PATH:$NDK_ROOT
 fi
-[ -d $HOME/Library/Android/ndk ] && export PATH=$PATH:$HOME/Library/Android/ndk
 
 # PATH 環境変数
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
@@ -91,4 +91,3 @@ greprep() {
 shopt -s histappend
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
