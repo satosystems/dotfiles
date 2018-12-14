@@ -25,6 +25,34 @@ if [ -d /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin ]; then
   export PATH=`pwd`:$PATH
   popd > /dev/null
 fi
+# Homebrew 版 vim が導入されている場合はそちらを利用する。
+for i in /usr/local/Cellar/vim/*/bin/; do
+  pushd $i > /dev/null
+  export PATH=`pwd`:$PATH
+  popd > /dev/null
+done
+if [ -d /usr/local/opt/go/libexec/bin ]; then
+  export GOPATH=$HOME/.go
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
+fi
+if [ -d /usr/local/opt/sqlite/bin ]; then
+  export PATH="/usr/local/opt/sqlite/bin:$PATH"
+  if [ "$LDFLAGS" == "" ]; then
+    export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+  else
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/sqlite/lib"
+  fi
+  if [ "$CPPFLAGS" == "" ]; then
+    export CPPFLAGS="-I/usr/local/opt/sqlite/include"
+  else
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/sqlite/include"
+  fi
+  if [ "$PKG_CONFIG_PATH" == "" ]; then
+    export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+  else
+    export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/sqlite/lib/pkgconfig"
+  fi
+fi
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
