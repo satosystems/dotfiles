@@ -104,6 +104,12 @@ repo = 'tyru/open-browser.vim'
 repo = 'SpaceVim/vim-swig'
 on_ft = 'i'
 
+[[plugins]]  # vim-vue
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
 # Raspberry Pi 環境で非常に時間がかかるためコメントアウト
 #[[plugins]]  # My sample
 #repo = 'satosystems/neovim-plugin-hello-haskell'
