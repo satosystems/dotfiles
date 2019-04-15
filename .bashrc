@@ -4,23 +4,11 @@ if [ -s "`which stack 2> /dev/null`" ]; then
   eval "$(stack exec env | grep ^PATH=)"
 fi
 
-# flow 関連
-
-alias armhf='docker exec -it flow-ubuntu-armhf bash'
-alias ubuntu18='docker exec -it flow-ubuntu-x86_64-18.04 bash'
-alias ubuntu14='docker exec -it flow-ubuntu-x86_64-14.04 bash'
-alias centos6='docker exec -it flow-centos-x86_64-6.8 bash'
-alias centos7='docker exec -it flow-centos-x86_64-7.3 bash'
-
-
 # SMC 関連のエイリアス
 alias smc='java -jar ~/Dropbox/smc/bin/Smc.jar'
 alias smcdot='smc -graph -glevel 1'
 alias smcpng='dot -T png -o'
 alias makepng='~/Dropbox/smc/bin/makepng.sh'
-
-# J-Link GDB Server
-alias jlink='/Applications/SEGGER/JLink/JLinkGDBServer -select USB -device Cortex-M3 -if JTAG -speed 1000'
 
 # 一般的なエイリアス
 if [ "$(uname)" == "Darwin" ]; then
@@ -33,8 +21,7 @@ if [ -s "`which macrm 2> /dev/null`" ]; then
 fi
 alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
-#[[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
-alias vi='vim'
+[[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
@@ -71,6 +58,12 @@ fi
 if [ -s "`which platformio 2> /dev/null`" ]; then
   eval "$(_PLATFORMIO_COMPLETE=source platformio)"
   eval "$(_PIO_COMPLETE=source pio)"
+fi
+
+# npm/yarn completion
+if [ -f /usr/local/lib/node_modules/npm-completion/npm-completion.sh ]; then
+  export PATH_TO_NPM_COMPLETION=/usr/local/lib/node_modules/npm-completion
+  source /usr/local/lib/node_modules/npm-completion/npm-completion.sh
 fi
 
 [ -f /usr/local/etc/bash_completion.d/cabal ] && source /usr/local/etc/bash_completion.d/cabal
@@ -117,7 +110,3 @@ fi
 
 # Google Cloud SDK
 [ -f $HOME/google-cloud-sdk/completion.bash.inc ] && . "$HOME/google-cloud-sdk/completion.bash.inc"
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-

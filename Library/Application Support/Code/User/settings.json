@@ -10,5 +10,10 @@
     "languageServerHaskell.liquidOn": true,
     "extensions.ignoreRecommendations": false,
     "editor.fontFamily": "Ricty Discord",
-    "editor.fontSize": 14
+    "editor.fontSize": 14,
+    "haskell.hlint.executablePath": "hlint",
+    "haskell.hlint.run": "onSave",
+    "javascript.suggestionActions.enabled": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "C_Cpp.updateChannel": "Insiders"
 }

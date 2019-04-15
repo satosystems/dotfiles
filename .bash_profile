@@ -6,10 +6,10 @@ if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/platform-tools
   export PATH=$PATH:$ANDROID_HOME/tools
-  for v in 25.0.3 27.0.3 28.0.3
-  do
-    [ -d $ANDROID_HOME/build-tools/$v ] && export PATH=$PATH:$ANDROID_HOME/build-tools/$v
-  done
+#  for v in 25.0.3 27.0.3 28.0.3
+#  do
+#    [ -d $ANDROID_HOME/build-tools/$v ] && export PATH=$PATH:$ANDROID_HOME/build-tools/$v
+#  done
   [ -d $ANDROID_HOME/ndk-bundle ] && export NDK_ROOT=$ANDROID_HOME/ndk-bundle && export PATH=$PATH:$NDK_ROOT
 fi
 
@@ -26,11 +26,13 @@ if [ -d /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin ]; then
   popd > /dev/null
 fi
 # Homebrew 版 vim が導入されている場合はそちらを利用する。
-for i in /usr/local/Cellar/vim/*/bin/; do
-  pushd $i > /dev/null
-  export PATH=`pwd`:$PATH
-  popd > /dev/null
-done
+if [ -d /usr/local/Cellar/vim/*/bin/ ]; then
+  for i in /usr/local/Cellar/vim/*/bin/; do
+    pushd $i > /dev/null
+    export PATH=`pwd`:$PATH
+    popd > /dev/null
+  done
+fi
 if [ -d /usr/local/opt/go/libexec/bin ]; then
   export GOPATH=$HOME/.go
   export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
