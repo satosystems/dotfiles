@@ -12,3 +12,6 @@
 
 # JetBrains の IDE の設定用フォルダ
 .idea/
+
+# direnv 定義ファイル
+.envrc

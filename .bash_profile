@@ -71,6 +71,8 @@ if [ -s "`which pyenv 2> /dev/null`" ]; then
   eval "$(pyenv init -)"
 fi
 [ -d $HOME/Library/Python/2.7/bin ] && export PATH=$PATH:$HOME/Library/Python/2.7/bin
+# pyenv 内の gettext が使われないように対策
+[ -d /usr/local/opt/gettext/bin ] && export PATH=/usr/local/opt/gettext/bin:$PATH
 
 # PlatformIO 関連
 [ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
@@ -116,6 +118,9 @@ if [[ $(uname) = MINGW* ]]; then cd; fi
 greprep() {
   grep -rl "$2" $1 | grep -v .git/ | xargs perl -i -pe "s/$2/$3/g"
 }
+
+# direnv
+which direnv 2> /dev/null 1>&2 && eval "$(direnv hook bash)"
 
 # 複数ターミナルのコマンド履歴をすべて保存
 shopt -s histappend
