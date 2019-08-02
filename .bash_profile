@@ -77,6 +77,21 @@ fi
 # PlatformIO 関連
 [ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
 
+# llvm
+if [ -d /usr/local/opt/llvm/bin ]; then
+  export PATH="/usr/local/opt/llvm/bin:$PATH"
+  if [ "$LDFLAGS" == "" ]; then
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+  else
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm/lib"
+  fi
+  if [ "$CPPFLAGS" == "" ]; then
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+  else
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm/include"
+  fi
+fi
+
 # mysql 関連
 if [ -d /usr/local/opt/mysql@5.7/bin ]; then
   export PATH=/usr/local/opt/mysql@5.7/bin:$PATH
