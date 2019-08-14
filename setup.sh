@@ -43,6 +43,7 @@ pairs=(
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
   ".clang-format" "$HOME/.clang-format"
   "Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+  "Library/Application Support/Code/User/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
 )
 
 for i in `seq ${#pairs[@]}`; do
