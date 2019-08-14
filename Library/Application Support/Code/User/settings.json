@@ -19,5 +19,8 @@
     "haskell.hlint.run": "onSave",
     "javascript.suggestionActions.enabled": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "indentRainbow.ignoreErrorLanguages": [
+        "haskell"
+    ]
 }
