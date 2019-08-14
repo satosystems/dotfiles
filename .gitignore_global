@@ -15,3 +15,6 @@
 
 # direnv 定義ファイル
 .envrc
+
+# pyenv 定義ファイル
+.python-version

@@ -64,6 +64,9 @@ export HISTSIZE=10000
 # macOS Java のバージョン切り替え
 [ "$(uname)" == "Darwin" ] && /usr/libexec/java_home > /dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
+# node 関連
+[ -d ~/.nodebrew/current/bin ] && export PATH=$PATH:~/.nodebrew/current/bin
+
 # Python 関連
 if [ -s "`which pyenv 2> /dev/null`" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
@@ -77,9 +80,9 @@ fi
 # PlatformIO 関連
 [ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
 
-# llvm
+# llvm 関連
 if [ -d /usr/local/opt/llvm/bin ]; then
-  export PATH="/usr/local/opt/llvm/bin:$PATH"
+  export PATH=/usr/local/opt/llvm/bin:$PATH
   if [ "$LDFLAGS" == "" ]; then
     export LDFLAGS="-L/usr/local/opt/llvm/lib"
   else

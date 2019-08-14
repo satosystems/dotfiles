@@ -10,7 +10,7 @@
     "languageServerHaskell.liquidOn": true,
     "extensions.ignoreRecommendations": false,
     "editor.fontFamily": "Ricty Discord",
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
@@ -22,5 +22,27 @@
     "C_Cpp.updateChannel": "Insiders",
     "indentRainbow.ignoreErrorLanguages": [
         "haskell"
-    ]
+    ],
+    "eslint.alwaysShowStatus": true,
+    "eslint.provideLintTask": true,
+    "eslint.packageManager": "yarn",
+    "window.nativeTabs": true,
+    "cmake.configureOnOpen": true,
+    "cmake.cmakePath": "/usr/local/bin/cmake",
+    "cpplint.cpplintPath": "~/.pyenv/shims/cpplint",
+    "cpplint.filters": [
+        "-build/include_order",
+        "-whitespace/line_length"
+    ],
+    "glsllint.glslangValidatorPath": "~/Library/glslang/bin/glslangValidator",
+    "[glsl]": {
+        "editor.defaultFormatter": "circledev.glsl-canvas"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "eslint.enable": true,
+    "eslint.run": "onType"
 }
