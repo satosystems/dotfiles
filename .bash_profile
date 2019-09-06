@@ -55,6 +55,9 @@ if [ -d /usr/local/opt/sqlite/bin ]; then
     export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/sqlite/lib/pkgconfig"
   fi
 fi
+if [ -d $HOME/.haskell ]; then
+  export PATH=$PATH:$HOME/.haskell
+fi
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない

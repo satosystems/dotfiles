@@ -24,6 +24,7 @@
     renew = !export __b=`git now` && git branch -m ___ && git co $__b && git branch -D ___ && unset __b
     merge-develop = !git co master && git merge --no-ff develop && git co develop && git rebase master
     delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+    fix-after-rebase = !git graph | fix-after-rebase.hs
 
 [push]
     default = current
