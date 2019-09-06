@@ -14,11 +14,19 @@
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
+    "editor.quickSuggestions": true,
     "editor.largeFileOptimizations": false,
+    "editor.formatOnSave": true,
+    "[markdown]": {
+        "editor.wordWrap": "off",
+        "editor.formatOnSave": false
+    },
     "haskell.hlint.executablePath": "hlint",
     "haskell.hlint.run": "onSave",
     "javascript.suggestionActions.enabled": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
     "C_Cpp.updateChannel": "Insiders",
     "indentRainbow.ignoreErrorLanguages": [
         "haskell"
@@ -41,8 +49,16 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.formatOnSave": false
     },
     "eslint.enable": true,
-    "eslint.run": "onType"
+    "eslint.run": "onType",
+    "editor.rulers": [
+        80
+    ],
+    "terminal.integrated.fontSize": 14,
+    "files.associations": {
+        "*.hs": "haskell"
+    },
+    "brittany.keepCRLF": true
 }
