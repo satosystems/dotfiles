@@ -48,13 +48,18 @@ extractComment line =
 findRebasedCommit :: String -> [String] -> Maybe String
 findRebasedCommit _ [] = Nothing
 findRebasedCommit keyword (line : graph)
-  | take 2 line == "* " = go (take 7 . drop 2 $ line) keyword $ drop 10 line
-  | otherwise           = findRebasedCommit keyword graph
+  | take 2 line == "* " = go (take 7 . drop 2 $ line) keyword False
+  $ drop 10 line
+  | otherwise = findRebasedCommit keyword graph
  where
-  go _ _ "" = findRebasedCommit keyword graph
-  go hash keyword (' ' : ' ' : comment) =
+  go _ _ _ "" = findRebasedCommit keyword graph
+  go hash keyword False (' ' : ' ' : '(' : comment) =
+    go hash keyword True comment
+  go hash keyword True (')' : ' ' : comment) =
     if keyword == comment then Just hash else findRebasedCommit keyword graph
-  go hash keyword (_ : cs) = go hash keyword cs
+  go hash keyword False (' ' : ' ' : comment) =
+    if keyword == comment then Just hash else findRebasedCommit keyword graph
+  go hash keyword b (_ : cs) = go hash keyword b cs
 
 rebranch :: (String, (String, [String])) -> IO ()
 rebranch (hash, (comment, branches)) = mapM_
