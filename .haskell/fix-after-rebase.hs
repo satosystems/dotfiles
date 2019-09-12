@@ -8,11 +8,7 @@ import           Data.List                      ( elemIndex
                                                 , foldl'
                                                 )
 import           Data.Maybe                     ( isJust )
-import           Data.Text                     as T
-                                                ( pack
-                                                , splitOn
-                                                , unpack
-                                                )
+import qualified Data.Text                     as T
 import           GHC.IO.Handle                  ( hGetContents )
 import           System.Process                 ( CreateProcess(std_out)
                                                 , StdStream(CreatePipe)
@@ -33,13 +29,19 @@ filterConflicted ('|' : cs) =
   isJust (elemIndex '(' cs) && isJust (elemIndex ')' cs)
 filterConflicted _ = False
 
-extractBranches :: String -> [String]
-extractBranches line =
-  let Just start = elemIndex '(' line
+extractBranches :: [String] -> String -> [String]
+extractBranches remotes line
+  = let
+      Just start = elemIndex '(' line
       Just end   = elemIndex ')' line
       start'     = succ start
-      branches = splitOn ", " $ pack . take (end - start') . drop start' $ line
-  in  map unpack branches
+      branches =
+        T.splitOn ", " $ T.pack . take (end - start') . drop start' $ line
+    in
+      map T.unpack $ filter excludeRemote branches
+ where
+  excludeRemote branch =
+    not $ any (\remote -> T.pack (remote ++ "/") `T.isPrefixOf` branch) remotes
 
 extractComment :: String -> String
 extractComment line =
@@ -86,10 +88,11 @@ command exe args = do
 
 main :: IO ()
 main = do
-  contents <- getContents
+  contents        <- getContents
+  gitRemoteResult <- command "git" ["remote"]
   let graph      = lines contents
   let conflicted = filter filterConflicted graph
-  let branches   = map extractBranches conflicted
+  let branches = map (extractBranches $ lines gitRemoteResult) conflicted
   let comments   = map extractComment conflicted
   let pairs      = zip comments branches
   let trios      = foldl' (folder graph) [] pairs
