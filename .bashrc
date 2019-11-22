@@ -1,7 +1,6 @@
 # Haskell と Stack
 if [ -s "`which stack 2> /dev/null`" ]; then
   eval "$(stack --bash-completion-script stack)"
-  eval "$(stack exec env | grep ^PATH=)"
 fi
 
 # SMC 関連のエイリアス

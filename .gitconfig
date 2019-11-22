@@ -31,7 +31,7 @@
 
 [user]
 	name = Satoshi Ogata
-	email = satosystems@gmail.com
+	email = satoshi.ogata@eflow.jp
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"

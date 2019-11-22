@@ -6,10 +6,10 @@ if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/platform-tools
   export PATH=$PATH:$ANDROID_HOME/tools
-#  for v in 25.0.3 27.0.3 28.0.3
-#  do
-#    [ -d $ANDROID_HOME/build-tools/$v ] && export PATH=$PATH:$ANDROID_HOME/build-tools/$v
-#  done
+  for v in `/bin/ls $ANDROID_HOME/build-tools`
+  do
+    export PATH=$ANDROID_HOME/build-tools/$v:$PATH
+  done
   [ -d $ANDROID_HOME/ndk-bundle ] && export NDK_ROOT=$ANDROID_HOME/ndk-bundle && export PATH=$PATH:$NDK_ROOT
 fi
 

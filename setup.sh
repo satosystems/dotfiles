@@ -36,6 +36,7 @@ done
 # create symbolic directories
 pairs=(
   ".haskell" "$HOME/.haskell"
+  ".hlint.yaml" "$HOME/.hlint.yaml"
   ".config/nvim" "$XDG_CONFIG_HOME/nvim"
   ".config/peco" "$XDG_CONFIG_HOME/peco"
   "Library/KeyBindings" "$HOME/Library/KeyBindings"
