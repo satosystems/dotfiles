@@ -9,6 +9,14 @@ if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
   exit 1
 fi
 
+# setup environment variables
+if [ "$XDG_CONFIG_HOME" == "" ]; then
+  XDG_CONFIG_HOME=~/.config
+fi
+if [ "$XDG_CACHE_HOME" == "" ]; then
+  XDG_CACHE_HOME=~/.cache
+fi
+
 # create directories
 dirs=(
   "$XDG_CONFIG_HOME"
