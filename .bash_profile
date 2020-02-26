@@ -58,6 +58,7 @@ fi
 if [ -d $HOME/.haskell ]; then
   export PATH=$PATH:$HOME/.haskell
 fi
+type stack > /dev/null && export PATH=$(stack path --compiler-bin):$PATH
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない

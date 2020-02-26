@@ -79,9 +79,6 @@ hook_add = '''
 [[plugins]]  # Haskell の補完
 repo = 'eagletmt/neco-ghc'
 
-[[plugins]]  # ghc-mod
-repo = 'eagletmt/ghcmod-vim'
-
 [[plugins]]
 repo = 'eagletmt/unite-haddock'
 

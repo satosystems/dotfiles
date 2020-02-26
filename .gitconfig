@@ -1,3 +1,6 @@
+[include]
+    path = ~/.gitconfig.local
+
 [color]
     ui = true
     diff = true
@@ -29,10 +32,6 @@
 [push]
     default = current
 
-[user]
-	name = Satoshi Ogata
-	email = satoshi.ogata@eflow.jp
-
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -43,7 +42,7 @@
 
 [core]
     editor = vim
-	excludesfile = /Users/ogata/.gitignore_global
+    excludesfile = /Users/ogata/.gitignore_global
     precomposeunicode = true
     quotepath = false
 
