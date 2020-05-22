@@ -14,6 +14,7 @@ if [ -d $HOME/Library/Android/sdk ]; then
 fi
 
 # PATH 環境変数
+export PATH="/usr/local/sbin:$PATH" # brew doctor が要求する
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 [ "$(uname)" == "Darwin" ] && [ -d /usr/local/opt/openssl/bin ] && export PATH=/usr/local/opt/openssl/bin:$PATH  # brew で入れた OpenSSL を優先する
 [ "$(uname)" == "Linux" ] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
@@ -139,6 +140,10 @@ if [[ $(uname) = MINGW* ]]; then cd; fi
 ## greprep *.sh "\/bin\/sh" "\/bin\/bash"
 greprep() {
   grep -rl "$2" $1 | grep -v .git/ | xargs perl -i -pe "s/$2/$3/g"
+}
+
+run_mongod() {
+  mongod --dbpath /data/db/mongodb
 }
 
 # direnv
