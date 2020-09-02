@@ -1,6 +1,9 @@
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 
+# "The default interactive shell is now zsh." を消す
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Android 関連
 if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
