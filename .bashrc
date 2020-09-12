@@ -110,3 +110,4 @@ fi
 
 # Google Cloud SDK
 [ -f $HOME/google-cloud-sdk/completion.bash.inc ] && . "$HOME/google-cloud-sdk/completion.bash.inc"
+[ -f "/Volumes/Data/Users/ogata/.ghcup/env" ] && source "/Volumes/Data/Users/ogata/.ghcup/env" # ghcup-env
