@@ -9,27 +9,26 @@ if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/platform-tools
   export PATH=$PATH:$ANDROID_HOME/tools
-  for v in `/bin/ls $ANDROID_HOME/build-tools`
-  do
+  for v in `/bin/ls $ANDROID_HOME/build-tools`; do
     export PATH=$ANDROID_HOME/build-tools/$v:$PATH
   done
   [ -d $ANDROID_HOME/ndk-bundle ] && export NDK_ROOT=$ANDROID_HOME/ndk-bundle && export PATH=$PATH:$NDK_ROOT
 fi
 
-# PATH 環境変数
-export PATH="/usr/local/sbin:$PATH" # brew doctor が要求する
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"  # brew doctor が要求する
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 [ "$(uname)" == "Darwin" ] && [ -d /usr/local/opt/openssl/bin ] && export PATH=/usr/local/opt/openssl/bin:$PATH  # brew で入れた OpenSSL を優先する
-[ "$(uname)" == "Linux" ] && [ -d $HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ] && export PATH=$HOME/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$PATH
-[ -d /Library/TeX/texbin ] && export PATH=/Library/TeX/texbin:$PATH
 [ -d /usr/local/opt/curl/bin ] && export PATH=/usr/local/opt/curl/bin:$PATH  # macOS 上で brew で OpenSSL を有効化した curl がある場合はそちらを使用する
+
+# Vim
 # MacVim に付属する vim を使用してクリップボード連携する
 if [ -d /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin ]; then
   pushd /usr/local/Cellar/macvim/*/MacVim.app/Contents/bin > /dev/null
   export PATH=`pwd`:$PATH
   popd > /dev/null
 fi
-# Homebrew 版 vim が導入されている場合はそちらを利用する。
+# Homebrew 版 Vim が導入されている場合はそちらを利用する。
 if [ -d /usr/local/Cellar/vim/*/bin/ ]; then
   for i in /usr/local/Cellar/vim/*/bin/; do
     pushd $i > /dev/null
@@ -37,10 +36,14 @@ if [ -d /usr/local/Cellar/vim/*/bin/ ]; then
     popd > /dev/null
   done
 fi
+
+# Go
 if [ -d /usr/local/opt/go/libexec/bin ]; then
   export GOPATH=$HOME/.go
   export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 fi
+
+# SQLite
 if [ -d /usr/local/opt/sqlite/bin ]; then
   export PATH="/usr/local/opt/sqlite/bin:$PATH"
   if [ "$LDFLAGS" == "" ]; then
@@ -59,24 +62,32 @@ if [ -d /usr/local/opt/sqlite/bin ]; then
     export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/sqlite/lib/pkgconfig"
   fi
 fi
+
+# Git
+if [ -d /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight ]; then
+  for i in /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight; do
+    pushd $i > /dev/null
+    export PATH=`pwd`:$PATH
+    popd > /dev/null
+  done
+fi
+
+# Haskell
 if [ -d $HOME/.haskell ]; then
   export PATH=$PATH:$HOME/.haskell
 fi
-type stack > /dev/null && export PATH=$(stack path --compiler-bin):$PATH
+type stack 2> /dev/null >&2 && export PATH=$(stack path --compiler-bin):$PATH
 
 # ヒストリ関連
 export HISTCONTROL=ignoreboth  # 重複した履歴と先頭がスペースで始まるコマンドは履歴に含めない
 export HISTIGNORE="fg*:bg*:jobs*:dirs*:history*"
 export HISTSIZE=10000
 
-# macOS Java のバージョン切り替え
-[ "$(uname)" == "Darwin" ] && /usr/libexec/java_home > /dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
-# node 関連
+# Node.js
 [ -d ~/.nodebrew/current/bin ] && export PATH=$PATH:~/.nodebrew/current/bin
 
-# Python 関連
-if [ -s "`which pyenv 2> /dev/null`" ]; then
+# Python
+if [ -s "`type pyenv 2> /dev/null`" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -85,10 +96,10 @@ fi
 # pyenv 内の gettext が使われないように対策
 [ -d /usr/local/opt/gettext/bin ] && export PATH=/usr/local/opt/gettext/bin:$PATH
 
-# PlatformIO 関連
+# PlatformIO
 [ -d $HOME/.platformio/penv/bin ] && export PATH=$PATH:$HOME/.platformio/penv/bin
 
-# llvm 関連
+# LLVM
 if [ -d /usr/local/opt/llvm/bin ]; then
   export PATH=/usr/local/opt/llvm/bin:$PATH
   if [ "$LDFLAGS" == "" ]; then
@@ -103,7 +114,7 @@ if [ -d /usr/local/opt/llvm/bin ]; then
   fi
 fi
 
-# mysql 関連
+# MySQL
 if [ -d /usr/local/opt/mysql@5.7/bin ]; then
   export PATH=/usr/local/opt/mysql@5.7/bin:$PATH
   if [ "$LDFLAGS" == "" ]; then
@@ -123,9 +134,6 @@ if [ -d /usr/local/opt/mysql@5.7/bin ]; then
   fi
 fi
 
-# Sebastien AIML 関連
-[ -d $HOME/Documents/xls2aiml/bin ] && export PATH=$PATH:$HOME/Documents/xls2aiml/bin
-
 # nvm
 res=which brew 2> /dev/null && brew list | grep -E '^nvm$'
 if [ "$res" == "nvm" ]; then
@@ -133,31 +141,14 @@ if [ "$res" == "nvm" ]; then
   . $(brew --prefix nvm)/nvm.sh
 fi
 
-[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
-
-# MINGW の場合、/ で開始してしまうため ~ に移動
-if [[ $(uname) = MINGW* ]]; then cd; fi
-
-# 便利関数
-## grep 置換
-## greprep *.sh "\/bin\/sh" "\/bin\/bash"
-greprep() {
-  grep -rl "$2" $1 | grep -v .git/ | xargs perl -i -pe "s/$2/$3/g"
-}
-
-run_mongod() {
-  mongod --dbpath /data/db/mongodb
-}
-
 # direnv
-which direnv 2> /dev/null 1>&2 && eval "$(direnv hook bash)"
+type direnv 2> /dev/null 1>&2 && eval "$(direnv hook bash)"
 
-# 複数ターミナルのコマンド履歴をすべて保存
-shopt -s histappend
-
+# iTerm2
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-if [ -d /Users/ogata/Library/cocos2d-x ]; then
+# Cocos2d-x
+if [ -d "$HOME/Library/cocos2d-x" ]; then
   # Add environment variable COCOS_X_ROOT for cocos2d-x
   export COCOS_X_ROOT="$HOME/Library/cocos2d-x"
   export PATH=$COCOS_X_ROOT:$PATH
@@ -169,3 +160,12 @@ if [ -d /Users/ogata/Library/cocos2d-x ]; then
   # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
   export COCOS_TEMPLATES_ROOT="$COCOS_X_ROOT/templates"
 fi
+
+# 複数ターミナルのコマンド履歴をすべて保存
+shopt -s histappend
+
+dict() {
+  open dict://$1
+}
+
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

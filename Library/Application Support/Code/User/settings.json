@@ -1,7 +1,6 @@
 {
   "brittany.keepCRLF": true,
   "editor.fontFamily": "Ricty Discord",
-  "editor.fontSize": 16,
   "editor.rulers": [
     80
   ],
@@ -15,6 +14,21 @@
   "indentRainbow.ignoreErrorLanguages": [
     "haskell"
   ],
+  "javascript.validate.enable": false,
+  "standard.enable": true,
+  "standard.run": "onType",
+  "standard.autoFixOnSave": true,
+  "standard.validate": [
+    "javascript",
+    "html"
+  ],
+  "standard.options": {
+    "plugins": ["html"],
+    "ignore": [
+      "node_modules/**"
+    ],
+  },
+  "typescript.suggestionActions.enabled": false,
   "javascript.suggestionActions.enabled": false,
   "languageServerHaskell.liquidOn": true,
   "languageServerHaskell.useCustomHieWrapper": true,
@@ -29,13 +43,18 @@
   "[html]": {
     "editor.formatOnSave": true
   },
-  "[yaml]": {
+  "[js]": {
+    "editor.formatOnSave": false
+  },
+  "[__yaml]": {
     "editor.formatOnSave": true
   },
   "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontSize": 16,
-  "window.zoomLevel": 2,
+  "terminal.integrated.fontSize": 14,
+  "window.zoomLevel": 0,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+    "source.fixAll.eslint": false
+  },
+  "editor.fontSize": 14,
+  "terminal.integrated.scrollback": 1000000
 }

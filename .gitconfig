@@ -48,7 +48,7 @@
 
 [core]
     editor = vim
-    excludesfile = /Users/ogata/.gitignore_global
+	excludesfile = /Users/ogata/.gitignore_global
     precomposeunicode = true
     quotepath = false
     autocrlf = false
@@ -69,3 +69,8 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+[user]
+	name = Satoshi Ogata
+	email = satoshi.ogata@eflow.jp
+[commit]
+	template = /Volumes/Data/Users/ogata/.stCommitMsg

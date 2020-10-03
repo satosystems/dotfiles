@@ -1,8 +1,3 @@
-# Haskell と Stack
-if [ -s "`which stack 2> /dev/null`" ]; then
-  eval "$(stack --bash-completion-script stack)"
-fi
-
 # SMC 関連のエイリアス
 alias smc='java -jar ~/Dropbox/smc/bin/Smc.jar'
 alias smcdot='smc -graph -glevel 1'
@@ -10,18 +5,11 @@ alias smcpng='dot -T png -o'
 alias makepng='~/Dropbox/smc/bin/makepng.sh'
 
 # 一般的なエイリアス
-if [ "$(uname)" == "Darwin" ]; then
-  alias ls='ls -FG'
-else
-  alias ls='ls -F --color=auto'
-fi
-if [ -s "`which macrm 2> /dev/null`" ]; then
-  alias rm='macrm'
-fi
+alias ls='ls -FG'
+type macrm 2> /dev/null >&2 && alias rm='macrm'
 alias ag='ag --smart-case --all-types'
 alias tree='tree -N'
-#[[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
-alias vi='vim'
+[[ `which nvim 2> /dev/null` = */nvim ]] && alias vi='nvim' || alias vi='vim'
 alias vi-noplugin='vi -u NONE --noplugin'
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
@@ -54,7 +42,7 @@ else
   start_agent
 fi
 
-# PlatformIO 関連
+# PlatformIO
 if [ -s "`which platformio 2> /dev/null`" ]; then
   eval "$(_PLATFORMIO_COMPLETE=source platformio)"
   eval "$(_PIO_COMPLETE=source pio)"
@@ -69,7 +57,7 @@ fi
 [ -f /usr/local/etc/bash_completion.d/cabal ] && source /usr/local/etc/bash_completion.d/cabal
 [ -f /usr/local/etc/bash_completion.d/docker ] && source /usr/local/etc/bash_completion.d/docker
 
-# Git 関連
+# Git
 if [ -d /usr/local/etc/bash_completion.d ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
   . /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -84,20 +72,18 @@ if [ -d /usr/local/etc/bash_completion.d ]; then
   # add されてない変更があったとき "*" を、
   # add されているが commit されていない変更があったとき "+" を表示する
   GIT_PS1_SHOWSTASHSTATE=1
-fi
 
-##### ターミナルプロンプト設定 #####
-# \u ユーザ名                      #
-# \h ホスト名                      #
-# \W カレントディレクトリ          #
-# \w カレントディレクトリのパス    #
-# \n 改行                          #
-# \d 日付                          #
-# \[ 表示させない文字列の開始      #
-# \] 表示させない文字列の終了      #
-# \$ $                             #
-####################################
-if [ $(uname) != MINGW* ]; then
+  ##### ターミナルプロンプト設定 #####
+  # \u ユーザ名                      #
+  # \h ホスト名                      #
+  # \W カレントディレクトリ          #
+  # \w カレントディレクトリのパス    #
+  # \n 改行                          #
+  # \d 日付                          #
+  # \[ 表示させない文字列の開始      #
+  # \] 表示させない文字列の終了      #
+  # \$ $                             #
+  ####################################
   export PS1='\[\e[0;35m\]\w\[\e[0m\033[1;34m\]$(__git_ps1)\[\e[1;32m\]\n\H\[\033[00m\] \$ '
 fi
 
@@ -110,4 +96,4 @@ fi
 
 # Google Cloud SDK
 [ -f $HOME/google-cloud-sdk/completion.bash.inc ] && . "$HOME/google-cloud-sdk/completion.bash.inc"
-[ -f "/Volumes/Data/Users/ogata/.ghcup/env" ] && source "/Volumes/Data/Users/ogata/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
