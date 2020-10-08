@@ -39,16 +39,16 @@
     default = current
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [core]
     editor = vim
-	excludesfile = /Users/ogata/.gitignore_global
+    excludesfile = /Users/ogata/.gitignore_global
     precomposeunicode = true
     quotepath = false
     autocrlf = false
@@ -70,7 +70,5 @@
     process = git-lfs filter-process
     required = true
 [user]
-	name = Satoshi Ogata
-	email = satoshi.ogata@eflow.jp
-[commit]
-	template = /Volumes/Data/Users/ogata/.stCommitMsg
+    name = Satoshi Ogata
+    email = satoshi.ogata@eflow.jp
