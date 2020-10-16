@@ -3,6 +3,8 @@ export XDG_CACHE_HOME=~/.cache
 
 # "The default interactive shell is now zsh." を消す
 export BASH_SILENCE_DEPRECATION_WARNING=1
+# Ctrl-D でログアウトしないようにする
+export IGNOREEOF=1000
 
 # Android 関連
 if [ -d $HOME/Library/Android/sdk ]; then
