@@ -51,6 +51,7 @@ pairs=(
   ".config/nvim" "$HOME/.vim"
   ".config/nvim/init.vim" "$HOME/.vimrc"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
+  ".stack/global-project/stack.yaml" "$HOME/.stack/global-project/stack.yaml"
   ".clang-format" "$HOME/.clang-format"
   "Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
   "Library/Application Support/Code/User/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
