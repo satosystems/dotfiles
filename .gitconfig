@@ -1,74 +1,78 @@
 [include]
-    path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 
 [color]
-    ui = true
-    diff = true
-    status = true
-    interactive = true
-    branch = true
+	ui = true
+	diff = true
+	status = true
+	interactive = true
+	branch = true
 
 [pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
 
 [receive]
-    denyCurrentBranch = refuse
-    denyNonFastForwards = true
-    denyDeletes = true
+	denyCurrentBranch = refuse
+	denyNonFastForwards = true
+	denyDeletes = true
 
 [alias]
-    graph = log --graph --date-order -C -M --pretty=format:\"%C(red)%h%Creset %C(cyan)%ad%Creset %C(yellow)%an%Creset %Cgreen%d%Creset %s\" --all --date=short
-    st = status
-    co = checkout
-    all-br = submodule foreach --recursive git branch
-    all-st = submodule foreach --recursive git st
-    all-push = submodule foreach git push
-    now = rev-parse --abbrev-ref HEAD
-    ch = rev-parse HEAD
-    all-fetch = fetch --recurse-submodules
-    nm = branch --no-merged
-    renew = !export __b=`git now` && git branch -m ___ && git co $__b && git branch -D ___ && unset __b
-    merge-develop = !git co master && git merge --no-ff develop && git co develop && git rebase master
-    delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-    fix-after-rebase = !git graph | fix-after-rebase.hs
-    histories = "!f(){ git log $1 | grep '^commit ' | awk '{print $2}' | xargs -ICOMMIT git show COMMIT:$1; };f"
+	graph = log --graph --date-order -C -M --pretty=format:\"%C(red)%h%Creset %C(cyan)%ad%Creset %C(yellow)%an%Creset %Cgreen%d%Creset %s\" --all --date=short
+	st = status
+	co = checkout
+	all-br = submodule foreach --recursive git branch
+	all-st = submodule foreach --recursive git st
+	all-push = submodule foreach git push
+	now = rev-parse --abbrev-ref HEAD
+	ch = rev-parse HEAD
+	all-fetch = fetch --recurse-submodules
+	nm = branch --no-merged
+	renew = !export __b=`git now` && git branch -m ___ && git co $__b && git branch -D ___ && unset __b
+	merge-develop = !git co master && git merge --no-ff develop && git co develop && git rebase master
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	fix-after-rebase = !git graph | fix-after-rebase.hs
+	histories = "!f(){ git log $1 | grep '^commit ' | awk '{print $2}' | xargs -ICOMMIT git show COMMIT:$1; };f"
 
 [push]
-    default = current
+	default = current
 
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
-    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [core]
-    editor = vim
-    excludesfile = /Users/ogata/.gitignore_global
-    precomposeunicode = true
-    quotepath = false
-    autocrlf = false
+	editor = vim
+	excludesfile = /Users/ogata/.gitignore_global
+	precomposeunicode = true
+	quotepath = false
+	autocrlf = false
 
 [merge]
-    ff = false
-    tool = vimdiff
+	ff = false
+	tool = vimdiff
 
 [mergetool]
-    keepBackup = false
+	keepBackup = false
 
 [credential]
-    helper = cache --timeout=86400
+	helper = cache --timeout=86400
 
 
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-[user]
-    name = Satoshi Ogata
-    email = satoshi.ogata@eflow.jp
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[fetch]
+	 prune = true
+
+[pull]
+	rebase = true
+	ff = only
