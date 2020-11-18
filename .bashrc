@@ -60,6 +60,16 @@ fi
 # Git
 if [ -d /usr/local/etc/bash_completion.d ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
+  __git_my_main() {
+    if [ ${COMP_CWORD} = 2 -a "${COMP_WORDS[1]}" = "all-rebase" ]; then
+      _git_branch
+    elif [ ${COMP_CWORD} = 2 -a "${COMP_WORDS[1]}" = "histories" ]; then
+      :
+    else
+      __git_main
+    fi
+  }
+  __git_complete git __git_my_main
   . /usr/local/etc/bash_completion.d/git-prompt.sh
   # 現在のブランチが upstream より進んでいるとき ">" を、
   # 遅れているとき "<" を、
