@@ -33,8 +33,7 @@
 	merge-develop = !git co master && git merge --no-ff develop && git co develop && git rebase master
 	delete-merged-branches = !git branch --merged | grep -v \\* | grep -v " main" | grep -v " master" | xargs -I % git branch -d %
 	fix-after-rebase = !git graph | fix-after-rebase.hs
-	histories = !"f() { git log $1 | grep '^commit ' | awk '{print $2}' | xargs -ICOMMIT sh -c \"echo '-------- COMMIT --------' ; git show COMMIT:$1\"; };f"
-	all-rebase = !"f() { if [ \"$1\" = \"\" ]; then echo 'git all-rebase <branch>' >&2; exit; fi; for b in `git branch --no-merged`; do git checkout $b; git rebase $1 || exit; done; git checkout $1; };f"
+	histories = !"f() { if [ \"$1\" = \"\" ]; then echo 'git histories <file>' >&2; exit 1; fi; git log $1 | grep '^commit ' | awk '{print $2}' | xargs -ICOMMIT sh -c \"echo '-------- COMMIT --------' ; git show COMMIT:$1\"; };f"
 
 [push]
 	default = current

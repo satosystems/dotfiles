@@ -10,17 +10,18 @@ if [ "`pwd`" != "$(cd $(dirname $0) && pwd)" ]; then
 fi
 
 # setup environment variables
-if [ "$XDG_CONFIG_HOME" == "" ]; then
-  XDG_CONFIG_HOME=~/.config
-fi
 if [ "$XDG_CACHE_HOME" == "" ]; then
   XDG_CACHE_HOME=~/.cache
+fi
+if [ "$XDG_CONFIG_HOME" == "" ]; then
+  XDG_CONFIG_HOME=~/.config
 fi
 
 # create directories
 dirs=(
-  "$XDG_CONFIG_HOME"
+  "$HOME/.local/bin"
   "$XDG_CACHE_HOME"
+  "$XDG_CONFIG_HOME"
 )
 
 for dir in ${dirs[@]}; do
@@ -43,18 +44,19 @@ done
 
 # create symbolic directories
 pairs=(
+  ".clang-format" "$HOME/.clang-format"
+  ".config/nvim" "$HOME/.vim"
+  ".config/nvim" "$XDG_CONFIG_HOME/nvim"
+  ".config/nvim/init.vim" "$HOME/.vimrc"
+  ".config/peco" "$XDG_CONFIG_HOME/peco"
   ".haskell" "$HOME/.haskell"
   ".hlint.yaml" "$HOME/.hlint.yaml"
-  ".config/nvim" "$XDG_CONFIG_HOME/nvim"
-  ".config/peco" "$XDG_CONFIG_HOME/peco"
-  "Library/KeyBindings" "$HOME/Library/KeyBindings"
-  ".config/nvim" "$HOME/.vim"
-  ".config/nvim/init.vim" "$HOME/.vimrc"
+  ".local/bin/git-all-rebase" "$HOME/.local/bin/git-all-rebase"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
   ".stack/global-project/stack.yaml" "$HOME/.stack/global-project/stack.yaml"
-  ".clang-format" "$HOME/.clang-format"
-  "Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
   "Library/Application Support/Code/User/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+  "Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+  "Library/KeyBindings" "$HOME/Library/KeyBindings"
 )
 
 for i in `seq ${#pairs[@]}`; do
