@@ -19,7 +19,6 @@ fi
 
 # create directories
 dirs=(
-  "$HOME/.local/bin"
   "$XDG_CACHE_HOME"
   "$XDG_CONFIG_HOME"
 )
@@ -51,7 +50,6 @@ pairs=(
   ".config/peco" "$XDG_CONFIG_HOME/peco"
   ".haskell" "$HOME/.haskell"
   ".hlint.yaml" "$HOME/.hlint.yaml"
-  ".local/bin/git-all-rebase" "$HOME/.local/bin/git-all-rebase"
   ".stack/config.yaml" "$HOME/.stack/config.yaml"
   ".stack/global-project/stack.yaml" "$HOME/.stack/global-project/stack.yaml"
   "Library/Application Support/Code/User/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"

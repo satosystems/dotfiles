@@ -61,10 +61,19 @@ fi
 if [ -d /usr/local/etc/bash_completion.d ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
   __git_my_main() {
-    if [ ${COMP_CWORD} = 2 -a "${COMP_WORDS[1]}" = "all-rebase" ]; then
-      _git_branch
-    elif [ ${COMP_CWORD} = 2 -a "${COMP_WORDS[1]}" = "histories" ]; then
-      :
+    local -r helps=('-' '--' '--h' '--he' '--hel')
+    if [ "${COMP_WORDS[1]}" = "all-rebase" ]; then
+      if [ ${COMP_CWORD} = 3 ]; then
+        COMPREPLY=('')
+      elif [ "${COMP_WORDS[2]}" = "--help" ]; then
+        COMPREPLY=('')
+      elif [[ ${helps[*]} =~ ${COMP_WORDS[2]} ]]; then
+        COMPREPLY=('--help ')
+      else
+        _git_branch
+      fi
+    elif [ "${COMP_WORDS[1]}" = "histories" ]; then
+      COMPREPLY=('')
     else
       __git_main
     fi

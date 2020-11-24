@@ -1,30 +1,49 @@
 #!/usr/bin/env bash
 
+rebased=()
+
+_help() {
+  man -M $HOME/.local/man git-all-rebase
+}
+
 _parent() {
-  git show-branch -a | grep -v `git rev-parse --abbrev-ref HEAD` | grep '^[ +]*[*-][ +]* \[' | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'
+  git show-branch -a | \
+    grep -v `git rev-parse --abbrev-ref HEAD` | \
+    grep '^[ +]*[*][ +]* \[' | \
+    head -n1 | \
+    sed 's/.*\[\(.*\)\].*/\1/' | \
+    sed 's/[\^~].*//' \
+    || \
+    git show-branch -a | \
+    grep -v `git rev-parse --abbrev-ref HEAD` | \
+    grep '^[ +]*[-][ +]* \[' | \
+    head -n1 | \
+    sed 's/.*\[\(.*\)\].*/\1/' | \
+    sed 's/[\^~].*//'
 }
 
 _rebase() {
   git checkout $2
-  # echo "  1 git checkout $2"
+  echo "  1 git checkout $2"
   local -r parent=`_parent`
   if [ "$parent" = "" ]; then
     return
   fi
   if [ "$1" = "$parent" ]; then
-    # echo "  1 git rebase $1 $2"
+    echo "  1 git rebase $1 $2"
     git rebase $1 $2 || exit 1
-    # echo "- 1 -------"
-    # git graph
-    # echo "-----------"
+    echo "- 1 -------"
+    git graph
+    echo "-----------"
   else
     _rebase $1 $parent
-    # echo "  2 git rebase $parent $2"
+    echo "  2 git rebase $parent $2"
     git rebase $parent $2 || exit 1
-    # echo "- 2 -------"
-    # git graph
-    # echo "-----------"
+    echo "- 2 -------"
+    git graph
+    echo "-----------"
   fi
+  rebased=($2 "${rebased[@]}")
 }
 
 _main() {
@@ -33,24 +52,28 @@ _main() {
     exit 1
   fi
   local -r current=`git rev-parse --abbrev-ref HEAD`
-  for branch in `git branch --sort=-authordate --no-merged`; do
+  git checkout $1
+  for branch in `git branch --sort=-authordate --no-merged | grep -v $1`; do
+    if [[ ${rebased[*]} =~ $branch ]]; then
+      continue
+    fi
     git checkout $branch
-    # echo "  2 git checkout $branch"
+    echo "  2 git checkout $branch"
     local parent=`_parent`
-    # echo "    parent: $parent"
+    echo "    parent: $parent"
     if [ $1 = $parent ]; then
       git rebase $parent || exit 1
     else
       branch_root=`git merge-base $parent $branch`
-      # echo "    branch_root: $branch_root"
+      echo "    branch_root: $branch_root"
       _rebase $1 $parent
       local to=`git show $parent | head -n1 | awk '{print $2}'`
-      # echo "    git show $parent | head -n1 | awk '{print \$2}'"
+      echo "    git show $parent | head -n1 | awk '{print \$2}'"
       git rebase --onto=$to $branch_root $branch
-      # echo "    git rebase --onto=$to $branch_root $branch"
-      # echo "- 3 -------"
-      # git graph
-      # echo "-----------"
+      echo "    git rebase --onto=$to $branch_root $branch"
+      echo "- 3 -------"
+      git graph
+      echo "-----------"
     fi
   done
   git checkout $current
