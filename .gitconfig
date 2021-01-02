@@ -19,7 +19,7 @@
 	denyDeletes = true
 
 [alias]
-	graph = log --graph --date-order -C -M --pretty=format:\"%C(red)%h%Creset %C(cyan)%ad%Creset %C(yellow)%an%Creset %Cgreen%d%Creset %s\" --all --date=short
+	graph = log --graph --all --date-order --find-copies --find-renames --date=short --pretty=format:'%C(red)%h%Creset %C(cyan)%ad%Creset %C(yellow)%an%Creset%Cgreen%d%Creset %s'
 	st = status
 	co = checkout
 	all-br = submodule foreach --recursive git branch

@@ -61,18 +61,28 @@ fi
 if [ -d /usr/local/etc/bash_completion.d ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
   __git_my_main() {
-    local -r helps=('-' '--' '--h' '--he' '--hel')
-    if [ "${COMP_WORDS[1]}" = "all-rebase" ]; then
-      if [ ${COMP_CWORD} = 3 ]; then
+    if [[ "${COMP_WORDS[1]}" = "all-rebase" ]]; then
+      local -r options=('-' '--' '--v' '--ve' '--ver' '--vers' '--versi' '--versio' '--h' '--he' '--hel')
+      if [[ ${COMP_CWORD} = 3 ]]; then
         COMPREPLY=('')
-      elif [ "${COMP_WORDS[2]}" = "--help" ]; then
+      elif [[ "${COMP_WORDS[2]}" = "--version" ]]; then
         COMPREPLY=('')
-      elif [[ ${helps[*]} =~ ${COMP_WORDS[2]} ]]; then
-        COMPREPLY=('--help ')
+      elif [[ "${COMP_WORDS[2]}" = "--help" ]]; then
+        COMPREPLY=('')
+      elif [[ ${options[*]} =~ ${COMP_WORDS[2]} ]]; then
+        if [[ ${COMP_WORDS[2]} =~ "--v" ]]; then
+          COMPREPLY=('--version ')
+        elif [[ ${COMP_WORDS[2]} =~ "--h" ]]; then
+          COMPREPLY=('--help ')
+        else
+          COMPREPLY=('--version ' '--help ')
+        fi
+      elif [[ ${COMP_WORDS[2]} =~ "--" ]]; then
+        COMPREPLY=()
       else
         _git_branch
       fi
-    elif [ "${COMP_WORDS[1]}" = "histories" ]; then
+    elif [[ "${COMP_WORDS[1]}" = "histories" ]]; then
       COMPREPLY=('')
     else
       __git_main

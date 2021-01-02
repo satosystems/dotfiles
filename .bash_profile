@@ -6,6 +6,12 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Ctrl-D でログアウトしないようにする
 export IGNOREEOF=1000
 
+# Java 関連
+if [[ -d /usr/local/opt/openjdk/bin ]]; then
+  export JAVA_HOME=/usr/local/opt/openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
 # Android 関連
 if [ -d $HOME/Library/Android/sdk ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
