@@ -49,7 +49,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
-	precomposeunicode = true
+	precomposeUnicode = true
 	quotepath = false
 	autocrlf = false
 
