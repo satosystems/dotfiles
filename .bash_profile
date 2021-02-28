@@ -6,6 +6,33 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Ctrl-D でログアウトしないようにする
 export IGNOREEOF=1000
 
+# nodenv
+if [ -d "$HOME/.nodenv" ]; then
+  eval "$(nodenv init -)"
+fi
+
+# icu4c
+if [ -d "/usr/local/opt/icu4c/bin" ]; then
+  export PATH="/usr/local/opt/icu4c/bin:$PATH"
+  export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
+  if [ "$LDFLAGS" == "" ]; then
+    export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  else
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/icu4c/lib"
+  fi
+  if [ "$CPPFLAGS" == "" ]; then
+    export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+  else
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/icu4c/include"
+  fi
+  if [ "$PKG_CONFIG_PATH" == "" ]; then
+    export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+  else
+    export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/icu4c/lib/pkgconfig"
+  fi
+fi
+
 # Java 関連
 if [[ -d /usr/local/opt/openjdk/bin ]]; then
   export JAVA_HOME=/usr/local/opt/openjdk
