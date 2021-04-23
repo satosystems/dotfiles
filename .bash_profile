@@ -209,4 +209,19 @@ dict() {
   open dict://$1
 }
 
+formatjson() {
+  TMPFILE=`uuidgen`
+  for f in "${@}"
+  do
+    cat "$f" | jq > /tmp/$TMPFILE && mv /tmp/$TMPFILE "$f"
+  done
+  # local -n arg=$1
+  # local -n TMPFILE=`uuidgen`
+  # for f in ${arg[@]}
+  # do
+  #   echo $f
+  #   # cat "$f" | jq > /tmp/$TMPFILE && mv /tmp/$TMPFILE "$f"
+  # done
+}
+
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
