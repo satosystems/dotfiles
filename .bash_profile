@@ -6,6 +6,12 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Ctrl-D でログアウトしないようにする
 export IGNOREEOF=1000
 
+# Rust
+if [ -f "$HOME/.cargo/env" ]; then
+  export CARGO_HOME="$HOME/.cargo"
+  source "$CARGO_HOME/env"
+fi
+
 # nodenv
 if [ -d "$HOME/.nodenv" ]; then
   eval "$(nodenv init -)"
