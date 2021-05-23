@@ -128,7 +128,7 @@ export HISTSIZE=10000
 [ -d ~/.nodebrew/current/bin ] && export PATH=$PATH:~/.nodebrew/current/bin
 
 # Python
-if [ -s "`type pyenv 2> /dev/null`" ]; then
+if [ -s "`which pyenv 2> /dev/null`" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -184,6 +184,12 @@ fi
 
 # direnv
 type direnv 2> /dev/null 1>&2 && eval "$(direnv hook bash)"
+
+# source-highlight
+if [ -f /usr/local/bin/src-hilite-lesspipe.sh ]; then
+  export LESS='-R'
+  export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh "%s"'
+fi
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

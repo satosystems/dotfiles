@@ -17,6 +17,8 @@ else
   alias diff='diff -u'
 fi
 [[ -s "`which gtimeout 2> /dev/null`" ]] && alias timeout='gtimeout'
+[[ -s "`which ccat 2> /dev/null`" ]] && alias cat='ccat'
+[[ -s "`which exa 2> /dev/null`" ]] && alias ls='exa'
 
 # ssh-agent 関連
 SSH_ENV=$HOME/.ssh-agent-environment
