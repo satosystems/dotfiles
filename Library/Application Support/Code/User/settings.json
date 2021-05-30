@@ -24,7 +24,9 @@
     "html"
   ],
   "standard.options": {
-    "plugins": ["html"],
+    "plugins": [
+      "html"
+    ],
     "ignore": [
       "node_modules/**"
     ],
@@ -44,11 +46,17 @@
   "[html]": {
     "editor.formatOnSave": true
   },
-  "[js]": {
-    "editor.formatOnSave": false
+  // "[js]": {
+  //   "editor.formatOnSave": false
+  // },
+  "yaml.format.enable": true,
+  "[yml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "[__yaml]": {
-    "editor.formatOnSave": true
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.fontSize": 14,
@@ -59,5 +67,23 @@
   "editor.fontSize": 14,
   "terminal.integrated.scrollback": 1000000,
   "google-translate.firstLanguage": "ja-jp",
-  "google-translate.serverDomain": "https://translate.google.com"
+  "google-translate.serverDomain": "https://translate.google.com",
+  "azure.resourceFilter": [
+    "8f5e020a-eadb-4caa-811c-b4ee629eb1ba/e2a2626e-f347-495a-8b74-86f7f64161e3"
+  ],
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltcIjFBMUExQVwiLFwiMzMzMzMzXCJdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0=",
+  "appService.showSavePrompt": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
 }
